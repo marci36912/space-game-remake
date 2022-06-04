@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IHpManager
+public class Health : MonoBehaviour
 {
     public int SetHealth { protected set; get; }
     [SerializeField] protected GameObject particles;
