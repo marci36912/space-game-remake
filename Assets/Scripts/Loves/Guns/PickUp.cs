@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [SerializeField] private int n;
+
     private bool zone;
+    private GameObject player;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")
         {
             zone = true;
+            player = collision.gameObject;
         }
     }
 
@@ -33,7 +37,9 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            //TODO set gun active in the inventory
+            player.GetComponentInChildren<GetGun>().SetGun(n);
+            Destroy(gameObject);
+            return;
         }
     }
 }

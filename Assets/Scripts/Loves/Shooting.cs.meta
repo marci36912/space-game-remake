@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: a6fb405009c8c0c4683bd53bda7c2b44
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lovedek: {fileID: 47071023234193484, guid: 06d6b2d2c3bffd545b1e74220e8dcff5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

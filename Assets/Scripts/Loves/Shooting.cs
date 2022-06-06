@@ -2,22 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loves : MonoBehaviour
+public class Shooting : MonoBehaviour
 {
     [SerializeField] protected GameObject lovedek;
+
+    private KeyCode loves;
+
+    private bool active;
 
     private Transform shootPoint;
     private Gun stats;
 
-    protected float cooldown;
-    protected float CD = 1;
+    private float cooldown = 0;
 
-    private void Start()
+    private void Update()
     {
-        shootPoint = transform.Find("AimPoint");
+        if (Input.GetKeyDown(loves))
+        {
+            active = true;
+        }
     }
 
-    protected void shooting(Quaternion dir)
+    private void FixedUpdate()
+    {
+        if (active)
+        {
+            Debug.Log("log");
+            shooting(angle().rotation);
+            active = false;
+        }
+    }
+
+    private Transform angle()
+    {
+        return transform.parent.gameObject.transform;
+    }
+
+    private void shooting(Quaternion dir)
     {
         if (cooldown <= Time.time)
         {
@@ -25,7 +46,7 @@ public class Loves : MonoBehaviour
             {
                 GameObject bullet = Instantiate(lovedek, shootPoint.position, dir);
                 bullet.GetComponent<Bullet>().setStats(shootPoint, stats.Damage, stats.Velocity, getSpread());
-                cooldown = Time.time + CD;
+                cooldown = Time.time + stats.Cooldown;
             }
         }
     }
@@ -38,5 +59,7 @@ public class Loves : MonoBehaviour
     public void setStats(Gun gun)
     {
         stats = gun;
+        shootPoint = transform.Find("AimPoint");
+        loves = KeyCode.Mouse0;
     }
 }

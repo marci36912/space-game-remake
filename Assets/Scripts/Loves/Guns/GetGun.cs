@@ -6,10 +6,7 @@ public class GetGun : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Guns;
     private GameObject activeGun;
-    private void Start()
-    {
-        SetGun(0);
-    }
+ 
     public void SetGun(int n)
     {
         if (transform.childCount != 0)
@@ -17,7 +14,7 @@ public class GetGun : MonoBehaviour
             Destroy(activeGun);
         }
 
-        activeGun = Guns[n];
-        Instantiate(activeGun, transform);
+        activeGun = Instantiate(Guns[n], transform);
+        activeGun.GetComponent<Shooting>().setStats(GunStats.ReturnGun(n));
     }
 }
