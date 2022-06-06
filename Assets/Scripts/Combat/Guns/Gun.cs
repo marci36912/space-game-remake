@@ -8,10 +8,10 @@ public class Gun
     public int Damage { private set; get; }
     public int Velocity { private set; get; }
     public float Spread { private set; get; }
-    public float BulletCount { private set; get; }
+    public int BulletCount { private set; get; }
     public float Cooldown { private set; get; }
 
-    public Gun(string name, int damage, int velocity, float spread, float bulletCount, float cooldown)
+    public Gun(string name, int damage, int velocity, float spread, int bulletCount, float cooldown)
     {
         Name = name;
         Damage = damage;

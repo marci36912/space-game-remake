@@ -12,14 +12,16 @@ public class Bullet : Mozgas
     {
         entity = GetComponent<Rigidbody2D>();
         entity.velocity = (tr.right + new Vector3(0, Spread)) * speed;
+
+        Destroy(gameObject, 5);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var tmp = collision.GetComponent<IHpManager>();
-        Destroy(gameObject);
         if (tmp == null) return;
 
-        tmp.getDamage(Damage);  
+        tmp.getDamage(Damage);
+        Destroy(gameObject);
     }
     public void setStats(Transform tr, int dmg, int velo, float spread)
     {

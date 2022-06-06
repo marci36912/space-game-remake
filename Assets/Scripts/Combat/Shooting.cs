@@ -15,6 +15,8 @@ public class Shooting : MonoBehaviour
 
     private float cooldown = 0;
 
+    int i;
+
     private void Update()
     {
         if (Input.GetKeyDown(loves))
@@ -27,7 +29,6 @@ public class Shooting : MonoBehaviour
     {
         if (active)
         {
-            Debug.Log("log");
             shooting(angle().rotation);
             active = false;
         }
@@ -42,7 +43,7 @@ public class Shooting : MonoBehaviour
     {
         if (cooldown <= Time.time)
         {
-            for (int i = 0; i <= stats.BulletCount; i++)
+            for (int i = 0; i < stats.BulletCount; i++)
             {
                 GameObject bullet = Instantiate(lovedek, shootPoint.position, dir);
                 bullet.GetComponent<Bullet>().setStats(shootPoint, stats.Damage, stats.Velocity, getSpread());
