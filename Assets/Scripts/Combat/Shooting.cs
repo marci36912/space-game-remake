@@ -15,8 +15,6 @@ public class Shooting : MonoBehaviour
 
     private float cooldown = 0;
 
-    int i;
-
     private void Update()
     {
         if (Input.GetKeyDown(loves))

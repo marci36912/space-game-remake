@@ -4,19 +4,46 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    private Vector3 tmpEger;
-    private float szog;
+    private Transform aimPoint;
 
+    private Vector3 mousePos;
+    private float angle;
+
+    private bool flip = true;
+
+    private void Start()
+    {
+        aimPoint = transform.Find("rotation");
+    }
     private void FixedUpdate()
     {
-        transform.eulerAngles = new Vector3(0, 0, direction());
+        direction();
+        
+
+        if (Mathf.Abs(angle) < 85 && flip == false)
+        {
+            flipPlayer();
+        }
+        else if (Mathf.Abs(angle) > 95 && flip == true)
+        {
+            flipPlayer();
+        }
     }
 
-    private float direction()
+    private void direction()
     {
-        tmpEger = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        szog = Mathf.Atan2(tmpEger.y, tmpEger.x);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        angle = Mathf.Atan2(mousePos.y, mousePos.x);
+        angle = Mathf.Rad2Deg * angle;
 
-        return Mathf.Rad2Deg * szog;
+        aimPoint.eulerAngles = new Vector3(0, 0, angle);
+    }
+
+    private void flipPlayer()
+    {
+        flip = !flip;
+
+        transform.Rotate(0f, 180f, 0f);
+        aimPoint.localScale = new Vector3(aimPoint.localScale.x, aimPoint.localScale.y * -1, aimPoint.localScale.z);
     }
 }
