@@ -19,14 +19,24 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         gp = transform.Find("rotation").transform.Find("GunPoint");
+        selectedPics[selectedPics.Length-1].color = Color.gray;
     }
 
     void Update()
     {
-        selectSlot();
-        selectedGun();
+        if (Shooting.onCooldown())
+        {
+            selectSlot();
+            selectedGun();
+        }
     }
-    
+
+    private void LateUpdate()
+    {
+        if (!Shooting.onCooldown()) selectedPics[selected].color = Color.red;
+        else selectedPics[selected].color = Color.white;
+    }
+
     public void setSelected(GameObject gun, GameObject active)
     {
         guns[selected] = gun;
@@ -37,17 +47,14 @@ public class Inventory : MonoBehaviour
     {
         if (tmp == selected) return;
         else
-        {
-            if (Shooting.onCooldown())
-            {
-                tmp = selected;
+        { 
+            tmp = selected;
 
-                if (gp.childCount != 0) Destroy(activeGun);
+            if (gp.childCount != 0) Destroy(activeGun);
 
-                if (guns[selected] != null) activeGun = Instantiate(guns[selected], gp);
+            if (guns[selected] != null) activeGun = Instantiate(guns[selected], gp);
                 
-                selectedColor();
-            }
+            selectedColor();
         }
     }
     private void selectSlot()
