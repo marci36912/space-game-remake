@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lovedek: {fileID: 47071023234193484, guid: 06d6b2d2c3bffd545b1e74220e8dcff5, type: 3}
+  n: 2
 --- !u!1 &7804178776587944325
 GameObject:
   m_ObjectHideFlags: 0

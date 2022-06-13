@@ -27,10 +27,9 @@ public class Inventory : MonoBehaviour
         selectedGun();
     }
     
-    public void setSelected(GameObject gun, GameObject active, Gun stats)
+    public void setSelected(GameObject gun, GameObject active)
     {
         guns[selected] = gun;
-        guns[selected].GetComponent<Shooting>().setStats(stats);
         selectedPics[selected].sprite = gun.GetComponent<SpriteRenderer>().sprite;
         activeGun = active;
     }
@@ -39,15 +38,16 @@ public class Inventory : MonoBehaviour
         if (tmp == selected) return;
         else
         {
-            tmp = selected;
+            if (Shooting.onCooldown())
+            {
+                tmp = selected;
 
-            if (gp.childCount != 0) Destroy(activeGun);
-            
-            Debug.Log(guns[selected] == null ? "null" : guns[selected].name);
+                if (gp.childCount != 0) Destroy(activeGun);
 
-            if (guns[selected] != null) activeGun = Instantiate(guns[selected], gp);
-            
-            selectedColor();
+                if (guns[selected] != null) activeGun = Instantiate(guns[selected], gp);
+                
+                selectedColor();
+            }
         }
     }
     private void selectSlot()

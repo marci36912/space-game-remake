@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] protected GameObject lovedek;
+    [SerializeField] private int n;
 
     private KeyCode loves;
 
@@ -13,8 +14,14 @@ public class Shooting : MonoBehaviour
     private Transform shootPoint;
     private Gun stats;
 
-    private float cooldown = 0;
+    private static float cooldown = 0;
 
+    private void Start()
+    {
+        stats = GunStats.ReturnGun(n);
+        shootPoint = transform.Find("AimPoint");
+        loves = KeyCode.Mouse0;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(loves))
@@ -39,7 +46,7 @@ public class Shooting : MonoBehaviour
 
     private void shooting(Quaternion dir)
     {
-        if (cooldown <= Time.time)
+        if (onCooldown())
         {
             for (int i = 0; i < stats.BulletCount; i++)
             {
@@ -55,10 +62,8 @@ public class Shooting : MonoBehaviour
         return Random.Range(-stats.Spread, stats.Spread + 0.1f);
     }
 
-    public void setStats(Gun gun)
+    public static bool onCooldown()
     {
-        stats = gun;
-        shootPoint = transform.Find("AimPoint");
-        loves = KeyCode.Mouse0;
+        return cooldown <= Time.time;
     }
 }

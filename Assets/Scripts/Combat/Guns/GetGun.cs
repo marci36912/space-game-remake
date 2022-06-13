@@ -20,7 +20,6 @@ public class GetGun : MonoBehaviour
         }
 
         activeGun = Instantiate(Guns[n], transform);
-        inventory.setSelected(Guns[n], activeGun, GunStats.ReturnGun(n));
-        activeGun.GetComponent<Shooting>().setStats(GunStats.ReturnGun(n));
+        inventory.setSelected(Guns[n], activeGun);
     }
 }
