@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Shooting.onCooldown())
+        if (Shooting.onCooldown() || Sword.onCooldown())
         {
             selectSlot();
             selectedGun();
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!Shooting.onCooldown()) selectedPics[selected].color = Color.red;
+        if (!Shooting.onCooldown() || !Sword.onCooldown()) selectedPics[selected].color = Color.red;
         else selectedPics[selected].color = Color.white;
     }
 

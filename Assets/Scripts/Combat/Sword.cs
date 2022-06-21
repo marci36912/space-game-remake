@@ -11,6 +11,10 @@ public class Sword : MonoBehaviour
 
     private bool mouseDown;
 
+    private int damage = 50;
+
+    private static float cooldown = 1, time;
+
     private void Start()
     {
         anim = FindObjectOfType<Animator>();
@@ -27,13 +31,33 @@ public class Sword : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mouseDown)
+        if (mouseDown && onCooldown())
         {
             hitManager();
+            collisionDetect();
+            time = cooldown + Time.time;
             mouseDown = false;
-
-            Debug.Log("hit");
         }
+    }
+
+    private void collisionDetect()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hitRegVector(), 2);
+
+        if (hits.Length == 0) return;
+
+        foreach (var item in hits)
+        {
+            var tmp = item.GetComponent<IHpManager>();
+            if (tmp == null) continue;
+
+            tmp.getDamage(damage);
+        }
+    }
+
+    private Vector2 hitRegVector()
+    {
+        return new Vector2(hitReg.transform.position.x, hitReg.transform.position.y);
     }
 
     private void hitManager()
@@ -48,5 +72,10 @@ public class Sword : MonoBehaviour
             hit = 0;
             anim.Play("sword_swing_back");
         }
+    }
+
+    public static bool onCooldown()
+    {
+        return time <= Time.time;
     }
 }

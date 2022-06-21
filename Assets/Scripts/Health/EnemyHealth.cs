@@ -15,7 +15,7 @@ public class EnemyHealth : Health, IHpManager
         {
             //TODO particle system, enemy death.
 
-            //Debug.Log("Deadxd");
+            Debug.Log("Deadxd");
             //Debug.Log("Overwrite");
         }
     }
