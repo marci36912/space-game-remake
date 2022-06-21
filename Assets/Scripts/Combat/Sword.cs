@@ -13,7 +13,8 @@ public class Sword : MonoBehaviour
 
     private int damage = 50;
 
-    private static float cooldown = 1, time;
+    private float cooldown = 1;
+    private static float time = 0;
 
     private void Start()
     {
