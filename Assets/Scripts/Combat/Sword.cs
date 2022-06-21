@@ -7,7 +7,7 @@ public class Sword : MonoBehaviour
     private Animator anim;
     private Transform hitReg;
 
-    private int hit = 1;
+    private int hit = 0;
 
     private bool mouseDown;
 
@@ -29,11 +29,10 @@ public class Sword : MonoBehaviour
     {
         if (mouseDown)
         {
-            anim.SetInteger("hit", hit);
-            anim.SetBool("hitBool", mouseDown);
             hitManager();
             mouseDown = false;
-            //anim.SetBool("hitBool", mouseDown);
+
+            Debug.Log("hit");
         }
     }
 
@@ -42,10 +41,12 @@ public class Sword : MonoBehaviour
         if (hit == 0)
         {
             hit = 1;
+            anim.Play("sword_swing");
         }
-        else if(hit == 1)
+        else
         {
             hit = 0;
+            anim.Play("sword_swing_back");
         }
     }
 }
