@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Shooting.onCooldown() || Sword.onCooldown())
+        if (Shooting.onCooldown() && Sword.onCooldown())
         {
             selectSlot();
             selectedGun();
