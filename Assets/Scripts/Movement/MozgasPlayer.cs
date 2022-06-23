@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MozgasPlayer : Mozgas
 {
+    [SerializeField] private EnergyBar energyBar;
+
     private float horizontalis;
     private float vertikalis;
 
@@ -51,6 +53,7 @@ public class MozgasPlayer : Mozgas
             length = 0.3f;
             speedActive = dash;
             dashCoolDown = Time.time + 3;
+            energyBar.nullTheValue();
         }
 
         if (length > 0)

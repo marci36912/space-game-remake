@@ -4,5 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    
+    private int maxHealth = 100;
+    private void Start()
+    {
+        SetHealth = maxHealth;
+    }
+
+    public float getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float getCurrentHealth()
+    {
+        return SetHealth;
+    }
 }
