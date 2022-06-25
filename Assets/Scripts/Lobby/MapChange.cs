@@ -7,6 +7,6 @@ public class MapChange : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        if(collision.gameObject.name == "Player") SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 }

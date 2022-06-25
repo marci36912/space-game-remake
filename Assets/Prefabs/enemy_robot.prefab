@@ -420,7 +420,7 @@ MonoBehaviour:
   bullet: {fileID: 4981938189182436036, guid: 6928566eb2adc4740b77197b47e67a54, type: 3}
   cooldownTime: 8
   damage: 5
-  velocity: 7
+  velocity: 10
   spread: 0.4
   bulletCount: 6
 --- !u!114 &8977647469959580614

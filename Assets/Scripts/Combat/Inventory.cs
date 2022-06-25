@@ -77,11 +77,6 @@ public class Inventory : MonoBehaviour
             activeGun = active;
         }
     }
-
-    private void setGun(int n)
-    {
-
-    }
     private void selectedGun()
     {
         if (tmp == selected) return;
@@ -100,15 +95,11 @@ public class Inventory : MonoBehaviour
     {
         selected += (int)Input.mouseScrollDelta.y;
 
-        if (selected > guns.Length - 1)
-        {
-            selected = 0;
-        }
+        if (selected > guns.Length - 1) selected = 0;
+        else if (selected < 0) selected = guns.Length - 1;
 
-        if (selected < 0)
-        {
-            selected = guns.Length - 1;
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) selected = 0;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) selected = 1;
     }
     private void selectedColor()
     {

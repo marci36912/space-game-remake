@@ -52,6 +52,10 @@ public class WaveSystem : MonoBehaviour
                 Debug.Log(round + " round");
             }
         }
+        else
+        {
+            
+        }
     }
 
     private void nextRound()
@@ -61,8 +65,11 @@ public class WaveSystem : MonoBehaviour
         round++;
         maxEnemy++;
 
-        setRoundText();
-        textAnim.Play("round_text", 0, 0);
+        if (round < maxRound)
+        {
+            setRoundText();
+            textAnim.Play("round_text", 0, 0);
+        }
     }
 
     #region bools
