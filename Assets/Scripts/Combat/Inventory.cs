@@ -23,6 +23,8 @@ public class Inventory : MonoBehaviour
 
         gp = transform.Find("rotation").transform.Find("GunPoint");
         selectedPics[selectedPics.Length-1].color = Color.gray;
+
+        if (guns[selected] != null && gp.transform.childCount == 0) activeGun = Instantiate(guns[selected], gp);
     }
 
     void Update()

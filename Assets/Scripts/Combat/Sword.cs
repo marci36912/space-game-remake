@@ -24,20 +24,17 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            mouseDown = true;
-        }
+        mouseDown = Input.GetKey(KeyCode.Mouse0);
     }
 
     private void FixedUpdate()
     {
         if (mouseDown && onCooldown())
         {
+            mouseDown = false;
             hitManager();
             collisionDetect();
             time = cooldown + Time.time;
-            mouseDown = false;
         }
     }
 
