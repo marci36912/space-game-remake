@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveSystem : MonoBehaviour
 {
     [SerializeField] private Transform[] spawns;
     [SerializeField] private GameObject[] enemies;
+
+    [SerializeField] private Animator textAnim;
+    [SerializeField] private TextMeshProUGUI roundText;
 
     private int maxRound = 5;
     private int round = 0;
@@ -18,14 +22,24 @@ public class WaveSystem : MonoBehaviour
     private float betweenEnemies = 3.5f;
     private float betweenRounds = 10;
 
+    private void Start()
+    {
+        setRoundText();
+    }
+
     private void FixedUpdate()
     {
         roundManager();
     }
 
+    private void setRoundText()
+    {
+        roundText.text = "ROUND " + (round + 1);
+    }
+
     private void roundManager()
     {
-        if (round != maxRound)
+        if (round < maxRound)
         {
             if (onSpawnCooldown() && !maxCount())
             {
@@ -46,6 +60,9 @@ public class WaveSystem : MonoBehaviour
         spawnedEnemy = 0;
         round++;
         maxEnemy++;
+
+        setRoundText();
+        textAnim.Play("round_text", 0, 0);
     }
 
     #region bools

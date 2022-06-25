@@ -24,10 +24,7 @@ public class Shooting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(loves))
-        {
-            active = true;
-        }
+        active = Input.GetKey(loves);
     }
 
     private void FixedUpdate()
@@ -35,7 +32,6 @@ public class Shooting : MonoBehaviour
         if (active)
         {
             shooting(angle().rotation);
-            active = false;
         }
     }
 
