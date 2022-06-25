@@ -53,9 +53,34 @@ public class Inventory : MonoBehaviour
 
     public void setSelected(GameObject gun, GameObject active)
     {
-        guns[selected] = gun;
-        selectedPics[selected].sprite = gun.GetComponent<SpriteRenderer>().sprite;
-        activeGun = active;
+        if (guns[0] == null)
+        {
+            guns[0] = gun;
+            selectedPics[0].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            if (activeGun != null) Destroy(activeGun);
+            activeGun = active;
+            selected = 0;
+        }
+        else if (guns[0] != null && guns[1] == null)
+        {
+            guns[1] = gun;
+            selectedPics[1].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            if (activeGun != null) Destroy(activeGun);
+            activeGun = active;
+            selected = 1;
+        }
+        else
+        {
+            guns[selected] = gun;
+            selectedPics[selected].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            if (activeGun != null) Destroy(activeGun);
+            activeGun = active;
+        }
+    }
+
+    private void setGun(int n)
+    {
+
     }
     private void selectedGun()
     {
