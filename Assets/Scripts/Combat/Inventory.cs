@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private Image[] selectedPics;
+    private static GameObject[] guns = new GameObject[2];
+
+    private Image[] selectedPics = new Image[2];
 
     private GameObject activeGun;
-
-    private GameObject[] guns = new GameObject[2];
+    
     private int selected = 0;
 
     private int tmp = 0;
@@ -18,6 +19,8 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        getImages();
+
         gp = transform.Find("rotation").transform.Find("GunPoint");
         selectedPics[selectedPics.Length-1].color = Color.gray;
     }
@@ -35,6 +38,15 @@ public class Inventory : MonoBehaviour
     {
         if (!Shooting.onCooldown() || !Sword.onCooldown()) selectedPics[selected].color = Color.red;
         else selectedPics[selected].color = Color.white;
+    }
+
+    private void getImages()
+    {
+        selectedPics[0] = transform.Find("PlayerCanvas").Find("gun1").gameObject.GetComponent<Image>();
+        selectedPics[1] = transform.Find("PlayerCanvas").Find("gun2").gameObject.GetComponent<Image>();
+
+        if (guns[0] != null) selectedPics[0].sprite = guns[0].GetComponent<SpriteRenderer>().sprite;
+        if (guns[1] != null) selectedPics[1].sprite = guns[1].GetComponent<SpriteRenderer>().sprite;
     }
 
     public void setSelected(GameObject gun, GameObject active)

@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(loves))
+        if (Input.GetKey(loves))
         {
             active = true;
         }

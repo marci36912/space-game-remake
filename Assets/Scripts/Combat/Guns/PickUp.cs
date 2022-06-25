@@ -37,7 +37,7 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            player.GetComponentInChildren<GetGun>().SetGun(n);
+            player.transform.Find("rotation").GetComponentInChildren<GetGun>().SetGun(n);
             Destroy(gameObject);
             return;
         }

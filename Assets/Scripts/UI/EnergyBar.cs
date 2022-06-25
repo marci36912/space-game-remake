@@ -11,6 +11,7 @@ public class EnergyBar : MonoBehaviour
     {
         energyBar = GetComponent<Slider>();
         energyBar.maxValue = 3;
+        energyBar.value = energyBar.maxValue;
     }
 
     private void FixedUpdate()
