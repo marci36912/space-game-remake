@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    private int maxHealth;
+    private int maxHealth = 100;
     private void Start()
     {
-        maxHealth = 100 + Buffs.Hp;
+        maxHealth += Buffs.Hp;
         SetHealth = maxHealth;
     }
 

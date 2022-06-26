@@ -10,7 +10,7 @@ public class Buffs : MonoBehaviour
     public static float Gold { private set; get; } = 1;     
     public static float Damage { private set; get; } = 1;   
     public static float Cd { private set; get; } = 0;       
-    public static float Velocity { private set; get; } = 0; 
+    public static float Velocity { private set; get; } = 1; 
     public static float SwordDamage { private set; get; } = 1;
 
 

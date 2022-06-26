@@ -5,6 +5,8 @@ using TMPro;
 
 public class WaveSystem : MonoBehaviour
 {
+    [SerializeField] private GameObject teleport;
+
     [SerializeField] private Transform[] spawns;
     [SerializeField] private GameObject[] enemies;
 
@@ -54,7 +56,12 @@ public class WaveSystem : MonoBehaviour
         }
         else
         {
-            //TODO boss
+            if (teleport.activeInHierarchy == false)
+            {
+                roundText.text = "Opened teleport";
+                textAnim.Play("round_text", 0, 0);
+                teleport.SetActive(true);
+            }
         }
     }
 

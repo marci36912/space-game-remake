@@ -8,7 +8,7 @@ public class Wallet : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
 
     public static Wallet Instance;
-    private static int AllMoney = 1;
+    private static int AllMoney = 9999;
 
     private void Start()
     {
