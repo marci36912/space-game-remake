@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] private int n;
+    [SerializeField] private int price;
 
     private bool zone;
     private GameObject player;
@@ -35,7 +36,7 @@ public class PickUp : MonoBehaviour
 
     private void pickUp()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && Wallet.Instance.Buy(price))
         {
             player.transform.Find("rotation").GetComponentInChildren<GetGun>().SetGun(n);
             Destroy(gameObject);

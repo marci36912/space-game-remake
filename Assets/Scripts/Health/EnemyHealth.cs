@@ -10,6 +10,8 @@ public class EnemyHealth : Health, IHpManager
 
     [SerializeField] private Transform healthPosition;
 
+    [SerializeField] private int money;
+
     private WaveSystem wave;
 
     private void Start()
@@ -32,6 +34,7 @@ public class EnemyHealth : Health, IHpManager
     {
         if (SetHealth <= 0)
         {
+            Wallet.Instance.addAmmount(money);
             wave.enemyDeath();
             Destroy(gameObject);
         }

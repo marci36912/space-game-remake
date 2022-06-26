@@ -290,6 +290,7 @@ MonoBehaviour:
   healthBar: {fileID: 7365751878816276318}
   fillArea: {fileID: 585490302730414768}
   healthPosition: {fileID: 3893193755778712261}
+  money: 10
 --- !u!61 &265457606
 BoxCollider2D:
   m_ObjectHideFlags: 0

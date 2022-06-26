@@ -593,6 +593,7 @@ MonoBehaviour:
   healthBar: {fileID: 6184957890050639483}
   fillArea: {fileID: 5606458528047888834}
   healthPosition: {fileID: 4946815397356454910}
+  money: 10
 --- !u!1 &9056093217438866621
 GameObject:
   m_ObjectHideFlags: 0

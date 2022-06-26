@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
     }
@@ -16,8 +17,16 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (canvas.enabled) canvas.enabled = false;
-            else canvas.enabled = true;
+            if (canvas.enabled)
+            {
+                canvas.enabled = false;
+                Time.timeScale = 1;
+            }
+            else
+            {
+                canvas.enabled = true;
+                Time.timeScale = 0;
+            }
         }
     }
 

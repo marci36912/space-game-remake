@@ -54,7 +54,7 @@ public class WaveSystem : MonoBehaviour
         }
         else
         {
-            
+            //TODO boss
         }
     }
 
