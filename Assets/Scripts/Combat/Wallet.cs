@@ -8,7 +8,7 @@ public class Wallet : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
 
     public static Wallet Instance;
-    private static int AllMoney = 10;
+    private static int AllMoney = 1;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class Wallet : MonoBehaviour
 
     public void addAmmount(int n)
     {
-        AllMoney += n;
+        AllMoney += (int)((float)n * Buffs.Gold);
         moneyText.text = AllMoney.ToString();
     }
 

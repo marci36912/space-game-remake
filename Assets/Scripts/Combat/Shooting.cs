@@ -14,10 +14,15 @@ public class Shooting : MonoBehaviour
     private Transform shootPoint;
     private Gun stats;
 
+    private float damage, cd, velocity;
+
     private static float cooldown = 0;
 
     private void Start()
     {
+        damage = Buffs.Damage;
+        cd = Buffs.Cd;
+        velocity = Buffs.Velocity;
         stats = GunStats.ReturnGun(n);
         shootPoint = transform.Find("AimPoint");
         loves = KeyCode.Mouse0;
@@ -47,8 +52,8 @@ public class Shooting : MonoBehaviour
             for (int i = 0; i < stats.BulletCount; i++)
             {
                 GameObject bullet = Instantiate(lovedek, shootPoint.position, dir);
-                bullet.GetComponent<Bullet>().setStats(shootPoint, stats.Damage, stats.Velocity, getSpread());
-                cooldown = Time.time + stats.Cooldown;
+                bullet.GetComponent<Bullet>().setStats(shootPoint, (int)((float)stats.Damage * damage), (int)((float)stats.Velocity * velocity), getSpread());
+                cooldown = Time.time + (stats.Cooldown + cd);
             }
         }
     }

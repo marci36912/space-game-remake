@@ -1,14 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PickUp : MonoBehaviour
 {
     [SerializeField] private int n;
     [SerializeField] private int price;
+    [SerializeField] private string gunName;
 
+    private TextMeshPro priceTag;
     private bool zone;
     private GameObject player;
+
+    private void Start()
+    {
+        priceTag = transform.GetChild(0).GetComponent<TextMeshPro>();
+        priceTag.text = $"{gunName} \n {price} gold";
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player")

@@ -20,6 +20,7 @@ public class Sword : MonoBehaviour
     {
         anim = FindObjectOfType<Animator>();
         hitReg = transform.parent;
+        damage = (int)((float)damage * Buffs.SwordDamage);
     }
 
     private void Update()
