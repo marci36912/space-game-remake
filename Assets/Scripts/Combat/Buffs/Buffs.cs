@@ -6,14 +6,22 @@ public class Buffs : MonoBehaviour
 {
     public static Buffs Instance;
 
-    public static int Hp { private set; get; } = 0;
-    public static float Gold { private set; get; } = 1;     
-    public static float Damage { private set; get; } = 1;   
-    public static float Cd { private set; get; } = 0;       
-    public static float Velocity { private set; get; } = 1; 
-    public static float SwordDamage { private set; get; } = 1;
+    public static int Hp { private set; get; }
+    public static float Gold { private set; get; }
+    public static float Damage { private set; get; }
+    public static float Cd { private set; get; }     
+    public static float Velocity { private set; get; }
+    public static float SwordDamage { private set; get; }
 
-
+    public void nullBuffs()
+    {
+        Hp = 0;
+        Gold = 1;
+        Damage = 1;
+        Cd = 0;
+        Velocity = 1;
+        SwordDamage = 1;
+    }
     private void Start()
     {
         if (Instance == null)

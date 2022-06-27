@@ -34,6 +34,7 @@ public class EnemyHealth : Health, IHpManager
     {
         if (SetHealth <= 0)
         {
+            Instantiate(particles, transform.position, Quaternion.identity);
             Wallet.Instance.addAmmount(money);
             wave.enemyDeath();
             Destroy(gameObject);

@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d689904887d3d40a15a1456ebc7f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 0}
+  particles: {fileID: 275841739052761363, guid: 2273a8a09d8984947a6b46ae074a78a1, type: 3}
   healthBar: {fileID: 7365751878816276318}
   fillArea: {fileID: 585490302730414768}
   healthPosition: {fileID: 3893193755778712261}

@@ -1451,9 +1451,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6975577145048362536, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 275841739052761363, guid: 2273a8a09d8984947a6b46ae074a78a1, type: 3}
     - target: {fileID: 6975577145048362544, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6975577145048362544, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
       propertyPath: m_LocalPosition.x

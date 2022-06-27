@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    private Canvas canvas;
+    [SerializeField] private Canvas hud;
+    [SerializeField] private Canvas background;
+    private Canvas pauseHud;
 
     private void Start()
     {
         Time.timeScale = 1;
-        canvas = GetComponent<Canvas>();
-        canvas.enabled = false;
+        pauseHud = GetComponent<Canvas>();
+        pauseHud.enabled = false;
+        background.enabled = false;
+        hud.enabled = true;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (canvas.enabled)
+            if (pauseHud.enabled)
             {
-                canvas.enabled = false;
+                pauseHud.enabled = false;
+                background.enabled = false;
+                hud.enabled = true;
                 Time.timeScale = 1;
             }
             else
             {
-                canvas.enabled = true;
+                pauseHud.enabled = true;
+                background.enabled = true;
+                hud.enabled = false;
                 Time.timeScale = 0;
             }
         }

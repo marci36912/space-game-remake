@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Starter : MonoBehaviour
 {
-    private static bool pickedUp = false;
+    public static bool pickedUp;
 
     private void Start()
     {
@@ -16,6 +17,6 @@ public class Starter : MonoBehaviour
 
     private void OnDestroy()
     {
-        pickedUp = true;
+        if(SceneManager.GetActiveScene().name == "LobbyScene")pickedUp = true;
     }
 }

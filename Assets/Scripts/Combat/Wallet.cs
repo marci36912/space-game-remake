@@ -10,6 +10,10 @@ public class Wallet : MonoBehaviour
     public static Wallet Instance;
     private static int AllMoney = 9999;
 
+    public void nullMoney()
+    {
+        AllMoney = 0;
+    }
     private void Start()
     {
         if (Instance == null)
@@ -17,13 +21,13 @@ public class Wallet : MonoBehaviour
             Instance = gameObject.GetComponent<Wallet>();
         }
 
-        moneyText.text = AllMoney.ToString();
+        if (moneyText != null) moneyText.text = AllMoney.ToString();
     }
 
     public void addAmmount(int n)
     {
         AllMoney += (int)((float)n * Buffs.Gold);
-        moneyText.text = AllMoney.ToString();
+        if (moneyText != null) moneyText.text = AllMoney.ToString();
     }
 
     public bool Buy(int n)
