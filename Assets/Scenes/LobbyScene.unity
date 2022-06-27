@@ -363,7 +363,13 @@ MonoBehaviour:
   weaponsSpawn:
   - {fileID: 1120711198}
   - {fileID: 1630526201}
-  buffs: []
+  buffs:
+  - {fileID: 4644422536198434540, guid: 53655262f8d7a9b42b70102ecdbd8718, type: 3}
+  - {fileID: 8878509184683776904, guid: d4cbd2394ce57d143a0d79731ca39340, type: 3}
+  - {fileID: 3528971018346212748, guid: f453e4dbb43aeb14ab57f5f64f25c16f, type: 3}
+  - {fileID: 5797982652382020292, guid: a1654244c9138c54bb1a4bd4ba5d521d, type: 3}
+  - {fileID: 6158301628124511757, guid: 01c69f2499c2a414a93e53b397c2f074, type: 3}
+  - {fileID: 5413738588351621497, guid: e788887b9db2cc14eb1458bc8d391bec, type: 3}
   buffsSpawn:
   - {fileID: 1178499141}
   - {fileID: 437873862}
@@ -747,6 +753,7 @@ GameObject:
   - component: {fileID: 1224923803}
   - component: {fileID: 1224923802}
   - component: {fileID: 1224923805}
+  - component: {fileID: 1224923806}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -835,6 +842,18 @@ MonoBehaviour:
   Player: {fileID: 0}
   minimum: {x: 0, y: -5.34}
   maximum: {x: 0, y: 5.39}
+--- !u!114 &1224923806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224923801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c38206bf813f854ca22917a724ad4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1498808953
 GameObject:
   m_ObjectHideFlags: 0

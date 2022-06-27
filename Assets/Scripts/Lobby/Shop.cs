@@ -15,8 +15,8 @@ public class Shop : MonoBehaviour
     {
         spawnItem(getGun(), weaponsSpawn[0]);
         spawnItem(getGun(), weaponsSpawn[1]);
-        spawnItem(getGun(), buffsSpawn[0]);
-        spawnItem(getGun(), buffsSpawn[1]);
+        spawnItem(getBuff(), buffsSpawn[0]);
+        spawnItem(getBuff(), buffsSpawn[1]);
     }
 
     private void spawnItem(GameObject item, Transform place)
