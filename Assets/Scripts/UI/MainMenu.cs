@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private Canvas easy;
     private void Start()
     {
         Buffs.Instance.nullBuffs();
         Wallet.Instance.nullMoney();
         Starter.pickedUp = false;
+    }
+
+    public void showHelp(bool help)
+    {
+        easy.enabled = help;
     }
 
     public void easyMode(bool easy)

@@ -28,7 +28,7 @@ public class MozgasEnemy : Mozgas
 
     private void mozgas()
     {
-        if (tooNear())
+        if (stop())
         {
             transform.position = Vector2.MoveTowards(transform.position, playerTransform.position + offset, Time.deltaTime * speed);
         }
@@ -36,7 +36,7 @@ public class MozgasEnemy : Mozgas
         distance = transform.position.x - playerTransform.position.x;
     }
 
-    private bool tooNear()
+    private bool stop()
     {
         if (Vector2.Distance(transform.position, playerTransform.position) < stopDistance) return false;
         else return true;
