@@ -30,6 +30,18 @@ public class Shooting : MonoBehaviour
         stats = GunStats.ReturnGun(n);
         shootPoint = transform.Find("AimPoint");
         loves = KeyCode.Mouse0;
+
+        PlayerHealth.OnPlayerDeath += onDeath;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDeath -= onDeath;
+    }
+
+    private void onDeath()
+    {
+        enabled = false;
     }
     private void Update()
     {

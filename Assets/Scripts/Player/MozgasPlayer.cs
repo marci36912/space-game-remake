@@ -22,7 +22,19 @@ public class MozgasPlayer : Mozgas
         base.doOnStart();
 
         speedActive = speed;
+        PlayerHealth.OnPlayerDeath += onDeath;
     }
+
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDeath -= onDeath;
+    }
+
+    private void onDeath()
+    {
+        enabled = false;
+    }
+
     private void Update()
     {
         horizontalis = Input.GetAxisRaw("Horizontal");

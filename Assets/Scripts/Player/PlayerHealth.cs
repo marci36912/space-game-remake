@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
+    public delegate void PlayerDeath();
+    public static event PlayerDeath OnPlayerDeath;
+
     private int maxHealth;
     private bool dead = false;
-    private void Start()
+    private void Awake()
     {
         maxHealth = 100 + Buffs.Hp;
         SetHealth = maxHealth;
@@ -18,9 +21,11 @@ public class PlayerHealth : Health
         if (SetHealth <= 0 && !dead)
         {
             base.Death();
+            GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             dead = true;
             Instantiate(particles, transform.position, Quaternion.identity);
             Invoke("backToTheMenu", 3);
+            OnPlayerDeath();
         }
     }
 

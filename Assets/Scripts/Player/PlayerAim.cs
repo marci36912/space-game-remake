@@ -14,6 +14,17 @@ public class PlayerAim : MonoBehaviour
     private void Start()
     {
         aimPoint = transform.Find("rotation");
+        PlayerHealth.OnPlayerDeath += onDeath;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDeath -= onDeath;
+    }
+
+    private void onDeath()
+    {
+        enabled = false;
     }
     private void FixedUpdate()
     {
