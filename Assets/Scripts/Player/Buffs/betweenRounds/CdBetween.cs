@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class CdBetween : CdBuff
 {
-    
+    private void OnDestroy()
+    {
+        WaveSystem.Instance.pickedUpBuff();
+        BuffBetweenRounds.Instance.resetBuff();
+    }
 }

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class GoldBetween : MoneyBuff
 {
-    
+    private void OnDestroy()
+    {
+        WaveSystem.Instance.pickedUpBuff();
+        BuffBetweenRounds.Instance.resetBuff();
+    }
 }

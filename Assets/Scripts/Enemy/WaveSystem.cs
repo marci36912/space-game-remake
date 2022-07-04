@@ -5,6 +5,8 @@ using TMPro;
 
 public class WaveSystem : MonoBehaviour
 {
+    public static WaveSystem Instance;
+
     [SerializeField] private GameObject teleport;
 
     [SerializeField] private Transform[] spawns;
@@ -24,9 +26,16 @@ public class WaveSystem : MonoBehaviour
     private float betweenEnemies = 3.5f;
     private float betweenRounds = 10;
 
+    private bool pickedUp = false;
+
+    public void pickedUpBuff()
+    {
+        pickedUp = true;
+    }
     private void Start()
     {
         setRoundText();
+        Instance = this;
     }
 
     private void FixedUpdate()
@@ -45,13 +54,12 @@ public class WaveSystem : MonoBehaviour
         {
             if (onSpawnCooldown() && !maxCount())
             {
+                pickedUp = false;
                 spawnenemy();
-                Debug.Log(spawnedEnemy + " enemy");
             }
             else if (maxCount() && killedAll())
             {
                 nextRound();
-                Debug.Log(round + " round");
             }
         }
         else
@@ -67,12 +75,17 @@ public class WaveSystem : MonoBehaviour
 
     private void nextRound()
     {
-        BuffBetweenRounds.Instance.spawnBuffs();
+        if (!pickedUp)
+        {
+            BuffBetweenRounds.Instance.spawnBuffs();
+            return;
+        }
 
         cooldown = Time.time + betweenRounds;
         spawnedEnemy = 0;
         round++;
         maxEnemy++;
+
 
         if (round < maxRound)
         {

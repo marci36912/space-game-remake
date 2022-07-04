@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
-    private int maxHealth = 100;
+    private int maxHealth;
     private bool dead = false;
     private void Start()
     {
-        maxHealth += Buffs.Hp;
+        maxHealth = 100 + Buffs.Hp;
         SetHealth = maxHealth;
     }
-
+    
     public override void Death()
     {
         if (SetHealth <= 0 && !dead)

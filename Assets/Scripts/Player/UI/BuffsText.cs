@@ -12,7 +12,7 @@ public class BuffsText : MonoBehaviour
     [SerializeField] private TextMeshProUGUI vel;
     [SerializeField] private TextMeshProUGUI sworddmg;
 
-    private void Start()
+    private void FixedUpdate()
     {
         health.text = $"+ {Buffs.Hp}";
         gold.text = $"{Buffs.Gold * 100}%";

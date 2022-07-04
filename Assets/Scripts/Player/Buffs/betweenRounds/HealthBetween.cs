@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class HealthBetween : HealthBuff
 {
-   
+    private void OnDestroy()
+    {
+        WaveSystem.Instance.pickedUpBuff();
+        BuffBetweenRounds.Instance.resetBuff();
+    }
 }
