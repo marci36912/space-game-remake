@@ -13,13 +13,15 @@ public class MozgasEnemy : Mozgas
     private bool flip = false;
     private float distance;
 
-    private void Start()
+    protected override void doOnStart()
     {
+        base.doOnStart();
+
         playerTransform = GameObject.Find("Player").transform;
 
         offset = new Vector3(Random.Range(-8, 8), Random.Range(-8, 8), 0);
     }
-    
+
     private void FixedUpdate()
     {
         mozgas();

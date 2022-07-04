@@ -8,9 +8,10 @@ public class Bullet : Mozgas
     private int Damage;
     private float Spread;
 
-    private void Start()
+    protected override void doOnStart()
     {
-        entity = GetComponent<Rigidbody2D>();
+        base.doOnStart();
+
         entity.velocity = (tr.right + new Vector3(0, Spread)) * speed;
 
         Destroy(gameObject, 5);

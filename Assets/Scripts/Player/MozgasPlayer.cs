@@ -17,10 +17,10 @@ public class MozgasPlayer : Mozgas
 
     private bool dashing = false;
 
-
-    private void Start()
+    protected override void doOnStart()
     {
-        entity = GetComponent<Rigidbody2D>();
+        base.doOnStart();
+
         speedActive = speed;
     }
     private void Update()
