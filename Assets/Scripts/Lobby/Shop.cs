@@ -13,10 +13,10 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        spawnItem(getGun(), weaponsSpawn[0]);
-        spawnItem(getGun(), weaponsSpawn[1]);
-        spawnItem(getBuff(), buffsSpawn[0]);
-        spawnItem(getBuff(), buffsSpawn[1]);
+        spawnItem(getRandomItem(weapons), weaponsSpawn[0]);
+        spawnItem(getRandomItem(weapons), weaponsSpawn[1]);
+        spawnItem(getRandomItem(buffs), buffsSpawn[0]);
+        spawnItem(getRandomItem(buffs), buffsSpawn[1]);
     }
 
     private void spawnItem(GameObject item, Transform place)
@@ -24,16 +24,10 @@ public class Shop : MonoBehaviour
         Instantiate(item, place.position, Quaternion.identity);
     }
 
-    private GameObject getBuff()
+    private GameObject getRandomItem(GameObject[] items)
     {
-        GameObject random = buffs[Random.Range(0, weapons.Length)];
-        tmp = tmp == random ? getBuff() : random;
-        return tmp;
-    }
-    private GameObject getGun()
-    {
-        GameObject random = weapons[Random.Range(0, weapons.Length)];
-        tmp = tmp == random ? getGun() : random;
+        GameObject random = items[Random.Range(0, items.Length)];
+        tmp = tmp == random ? getRandomItem(items) : random;
         return tmp;
     }
 }
