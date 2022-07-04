@@ -67,6 +67,8 @@ public class WaveSystem : MonoBehaviour
 
     private void nextRound()
     {
+
+
         cooldown = Time.time + betweenRounds;
         spawnedEnemy = 0;
         round++;

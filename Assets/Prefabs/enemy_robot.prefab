@@ -421,7 +421,7 @@ MonoBehaviour:
   cooldownTime: 8
   damage: 5
   velocity: 10
-  spread: 0.4
+  spread: 30
   bulletCount: 6
 --- !u!114 &8977647469959580614
 MonoBehaviour:

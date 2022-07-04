@@ -12,7 +12,8 @@ public class Bullet : Mozgas
     {
         base.doOnStart();
 
-        entity.velocity = (tr.right + new Vector3(0, Spread)) * speed;
+        transform.rotation = Quaternion.Euler(0, 0, tr.rotation.eulerAngles.z + Spread);
+        entity.velocity = (transform.right) * speed;
 
         Destroy(gameObject, 5);
     }

@@ -12,7 +12,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void Start()
     {
-        cooldown = Random.Range(2, 10);
+        cooldown = Random.Range(2, 10) + Time.time;
     }
 
     private void FixedUpdate()

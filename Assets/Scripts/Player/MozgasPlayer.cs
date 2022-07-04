@@ -52,7 +52,8 @@ public class MozgasPlayer : Mozgas
         {
             length = 0.3f;
             speedActive = dash;
-            dashCoolDown = Time.time + 3;
+            dashCoolDown = Time.time + 4;
+            if(Shooting.Instance != null) Shooting.Instance.reload();
             energyBar.nullTheValue();
         }
 

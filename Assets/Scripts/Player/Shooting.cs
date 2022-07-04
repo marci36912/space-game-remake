@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public static Shooting Instance;
+
     [SerializeField] protected GameObject lovedek;
     [SerializeField] private int n;
 
@@ -20,6 +22,8 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
+
         damage = Buffs.Damage;
         cd = Buffs.Cd;
         velocity = Buffs.Velocity;
@@ -36,7 +40,7 @@ public class Shooting : MonoBehaviour
     {
         if (active)
         {
-            shooting(angle().rotation);
+            shooting();
         }
     }
 
@@ -45,19 +49,23 @@ public class Shooting : MonoBehaviour
         return transform.parent.gameObject.transform;
     }
 
-    private void shooting(Quaternion dir)
+    private void shooting()
     {
         if (onCooldown())
         {
             for (int i = 0; i < stats.BulletCount; i++)
             {
-                GameObject bullet = Instantiate(lovedek, shootPoint.position, dir);
-                bullet.GetComponent<Bullet>().setStats(shootPoint, (int)((float)stats.Damage * damage), (int)((float)stats.Velocity * velocity), getSpread());
+                GameObject bullet = Instantiate(lovedek, shootPoint.position, angle().rotation);
+                bullet.GetComponent<Bullet>().setStats(angle(), (int)((float)stats.Damage * damage), (int)((float)stats.Velocity * velocity), getSpread());
                 cooldown = Time.time + (stats.Cooldown + cd);
             }
         }
     }
 
+    public void reload()
+    {
+        cooldown = 0;
+    }
     private float getSpread()
     {
         return Random.Range(-stats.Spread, stats.Spread + 0.1f);
