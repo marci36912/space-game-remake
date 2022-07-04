@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : Mozgas
 {
-    private Transform tr;
-    private int Damage;
-    private float Spread;
+    protected Transform tr;
+    protected int Damage;
+    protected float Spread;
 
     protected override void doOnStart()
     {
@@ -18,12 +18,18 @@ public class Bullet : Mozgas
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        doOnTrigger(collision);
+    }
+
+    protected virtual void doOnTrigger(Collider2D collision)
+    {
         var tmp = collision.GetComponent<IHpManager>();
         if (tmp == null) return;
 
         tmp.getDamage(Damage);
         Destroy(gameObject);
     }
+
     public void setStats(Transform tr, int dmg, int velo, float spread)
     {
         this.tr = tr;
