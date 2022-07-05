@@ -29,4 +29,10 @@ public class CameraFollow : MonoBehaviour
 
 		transform.position = new Vector3(Mathf.Clamp(cameraPositionX, minimum.x, maximum.x), Mathf.Clamp(cameraPositionY, minimum.y, maximum.y), transform.position.z);
 	}
+
+	public void setMinMax(Vector2 min, Vector2 max)
+    {
+		minimum = min;
+		maximum = max;
+    }
 }
