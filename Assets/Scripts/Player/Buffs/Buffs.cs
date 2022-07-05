@@ -37,7 +37,7 @@ public class Buffs : MonoBehaviour
 
     public void GoldBuff()
     {
-        Gold += 0.05f;
+        Gold += 0.1f;
     }
 
     public void DamageBuff()

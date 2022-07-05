@@ -6,8 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public static float MusicVolume { get; private set; }
-    public static float EffectVolume { get; private set; }
+    public static float MusicVolume { get; private set; } = 1;
+    public static float EffectVolume { get; private set; } = 1;
 
     [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource effect;
