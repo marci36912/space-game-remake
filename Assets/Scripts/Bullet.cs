@@ -24,6 +24,7 @@ public class Bullet : Mozgas
 
     protected virtual void doOnTrigger(Collider2D collision)
     {
+        if (collision.name == "shield" || collision.tag == "wall") Destroy(gameObject);
         var tmp = collision.GetComponent<IHpManager>();
         if (tmp == null) return;
 

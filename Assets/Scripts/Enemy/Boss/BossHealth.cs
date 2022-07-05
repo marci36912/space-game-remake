@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BossHealth : Health, IHpManager
 {
+    [SerializeField] private GameObject teleport;
+
     [SerializeField] private Slider healthBar;
     [SerializeField] private int MaxHealth;
 
@@ -19,5 +21,16 @@ public class BossHealth : Health, IHpManager
     {
         base.getDamage(n);
         healthBar.value = SetHealth;
+    }
+
+    public override void Death()
+    {
+        if (SetHealth <= 0)
+        {
+            teleport.SetActive(true);
+            Instantiate(particles, transform.position, Quaternion.identity);
+            Wallet.Instance.addAmmount(1000);
+            Destroy(gameObject);
+        }
     }
 }

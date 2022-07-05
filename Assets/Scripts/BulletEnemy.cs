@@ -6,6 +6,7 @@ public class BulletEnemy : Bullet
 {
     protected override void doOnTrigger(Collider2D collision)
     {
+        if (collision.tag == "wall") Destroy(gameObject);
         var tmp = collision.GetComponent<PlayerHealth>();
         if (tmp == null) return;
 
