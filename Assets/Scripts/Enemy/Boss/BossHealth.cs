@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BossHealth : Health, IHpManager
 {
+    public delegate void destroyFlyes();
+    public static event destroyFlyes destroyThem;
+
     [SerializeField] private GameObject teleport;
 
     [SerializeField] private GameObject shield;
@@ -29,13 +32,13 @@ public class BossHealth : Health, IHpManager
 
     private void stageCheck()
     {
-        if (SetHealth / MaxHealth >= 0.5 && !secondStage)
+        if (healthPercentage(50) && !secondStage)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = stages[0];
             secondStage = true;
             shield.SetActive(true);
         }
-        else if (SetHealth / MaxHealth >= 0.15 && !thirdStage)
+        else if (healthPercentage(15) && !thirdStage)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = stages[1];
             thirdStage = true;
@@ -45,6 +48,11 @@ public class BossHealth : Health, IHpManager
                 Instantiate(flyers, transform.position, Quaternion.identity);
             }
         }
+    }
+
+    private bool healthPercentage(int n)
+    {
+        return (healthBar.value / healthBar.maxValue * 100) <= n;
     }
 
     public override void getDamage(int n)
@@ -59,8 +67,10 @@ public class BossHealth : Health, IHpManager
         if (SetHealth <= 0)
         {
             teleport.SetActive(true);
+            AudioManager.Instance.PlayRobotExplosion();
             Instantiate(particles, transform.position, Quaternion.identity);
             Wallet.Instance.addAmmount(1000);
+            if(destroyThem != null) destroyThem();
             Destroy(gameObject);
         }
     }

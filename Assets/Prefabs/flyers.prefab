@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 3339926985349636274}
   - component: {fileID: 3339926985349636273}
   - component: {fileID: 3339926985349636272}
+  - component: {fileID: 270941753479414262}
   m_Layer: 0
   m_Name: flyers
   m_TagString: Untagged
@@ -183,5 +184,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02638ab03827e2a48917fbeb954f22d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &270941753479414262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339926985349636277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6241ed890739d9f41b59c1b17c8ba122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
