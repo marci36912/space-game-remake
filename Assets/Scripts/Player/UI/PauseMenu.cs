@@ -17,8 +17,11 @@ public class PauseMenu : MonoBehaviour
         pauseHud.enabled = false;
         background.enabled = false;
         hud.enabled = true;
-    }
 
+        sliders[0].value = AudioManager.MusicVolume;
+        sliders[1].value = AudioManager.EffectVolume;
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

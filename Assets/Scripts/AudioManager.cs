@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    public static float MusicVolume { get; private set; }
+    public static float EffectVolume { get; private set; }
+
     [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource effect;
 
@@ -15,10 +18,12 @@ public class AudioManager : MonoBehaviour
     #region setVolumes
     public void SetEffectVolume(float n)
     {
+        EffectVolume = n;
         effect.volume = n;
     }
     public void SetMusicVolume(float n)
     {
+        MusicVolume = n;
         music.volume = n;
     }
     #endregion
@@ -26,6 +31,9 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         if (Instance == null) Instance = this;
+
+        music.volume = MusicVolume;
+        effect.volume = EffectVolume;
     }
 
     #region effects
