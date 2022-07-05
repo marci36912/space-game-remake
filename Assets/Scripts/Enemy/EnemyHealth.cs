@@ -37,6 +37,7 @@ public class EnemyHealth : Health, IHpManager
             Instantiate(particles, transform.position, Quaternion.identity);
             Wallet.Instance.addAmmount(money);
             wave.enemyDeath();
+            AudioManager.Instance.PlayRobotExplosion();
             Destroy(gameObject);
         }
     }

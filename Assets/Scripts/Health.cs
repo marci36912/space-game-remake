@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
     {
         
     }
-    public void getDamage(int n)
+    public virtual void getDamage(int n)
     {
         SetHealth -= n;
     }

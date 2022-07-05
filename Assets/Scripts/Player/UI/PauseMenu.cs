@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Canvas hud;
     [SerializeField] private Canvas background;
+    [SerializeField] private Slider[] sliders;
     private Canvas pauseHud;
 
     private void Start()
@@ -27,6 +29,7 @@ public class PauseMenu : MonoBehaviour
                 background.enabled = false;
                 hud.enabled = true;
                 Time.timeScale = 1;
+                sliderMaanger();
             }
             else
             {
@@ -34,6 +37,25 @@ public class PauseMenu : MonoBehaviour
                 background.enabled = true;
                 hud.enabled = false;
                 Time.timeScale = 0;
+                sliderMaanger();
+            }
+        }
+    }
+
+    private void sliderMaanger()
+    {
+        if (sliders[0].interactable)
+        {
+            foreach (var item in sliders)
+            {
+                item.interactable = false;
+            }
+        }
+        else
+        {
+            foreach (var item in sliders)
+            {
+                item.interactable = true;
             }
         }
     }

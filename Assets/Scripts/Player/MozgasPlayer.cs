@@ -62,6 +62,7 @@ public class MozgasPlayer : Mozgas
     {
         if (dashing && dashCoolDown <= Time.time && length <= 0)
         {
+            AudioManager.Instance.PlayDash();
             length = 0.3f;
             speedActive = dash;
             dashCoolDown = Time.time + 4;

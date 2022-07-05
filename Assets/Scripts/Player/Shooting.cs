@@ -66,6 +66,7 @@ public class Shooting : MonoBehaviour
                 bullet.GetComponent<Bullet>().setStats(angle(), (int)(stats.Damage * Buffs.Damage), (int)(stats.Velocity * Buffs.Velocity), getSpread());
                 cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
             }
+            AudioManager.Instance.PlayPlayerShoot();
         }
     }
 

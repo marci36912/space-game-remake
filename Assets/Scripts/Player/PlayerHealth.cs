@@ -15,7 +15,12 @@ public class PlayerHealth : Health
         maxHealth = 100 + Buffs.Hp;
         SetHealth = maxHealth;
     }
-    
+
+    public override void getDamage(int n)
+    {
+        base.getDamage(n);
+        AudioManager.Instance.PlayPlayerHurt();
+    }
     public override void Death()
     {
         if (SetHealth <= 0 && !dead)
@@ -23,6 +28,7 @@ public class PlayerHealth : Health
             base.Death();
             GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             dead = true;
+            AudioManager.Instance.PlayPlayerExplosion();
             Instantiate(particles, transform.position, Quaternion.identity);
             Invoke("backToTheMenu", 3);
             OnPlayerDeath();
