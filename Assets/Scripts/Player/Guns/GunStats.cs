@@ -9,9 +9,9 @@ public class GunStats : MonoBehaviour
     private void Awake()
     {
         //name, damage, velocity, spread, bulletcount, cd
-        Gun pistol = new Gun("Pistol", 18, 13, 0, 1, 1.2f);           //0
-        Gun ar = new Gun("Assault Riffle", 25, 15, 0, 1, 1f);     //1
-        Gun shotgun = new Gun("Shotgun", 8, 11, 30f, 9, 1.5f);     //2
+        Gun pistol = new Gun("Pistol", 15, 13, 0, 1, 1.4f);           //0
+        Gun ar = new Gun("Assault Riffle", 20, 15, 0, 1, 1.2f);     //1
+        Gun shotgun = new Gun("Shotgun", 6, 11, 30f, 9, 2f);     //2
 
         gunList.Add(pistol);
         gunList.Add(ar);

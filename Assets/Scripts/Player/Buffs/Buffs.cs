@@ -37,26 +37,26 @@ public class Buffs : MonoBehaviour
 
     public void GoldBuff()
     {
-        Gold += 0.1f;
+        Gold += 0.05f;
     }
 
     public void DamageBuff()
     {
-        Damage += 0.1f;
+        Damage += 0.05f;
     }
 
     public void CdReduction()
     {
-        Cd -= 0.1f;
+        Cd -= 0.05f;
     }
 
     public void VelocityBuff()
     {
-        Velocity += 0.1f;
+        Velocity += 0.05f;
     }
 
     public void SwordBuff()
     {
-        SwordDamage += 0.2f;
+        SwordDamage += 0.1f;
     }
 }
