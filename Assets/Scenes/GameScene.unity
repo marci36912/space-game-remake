@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleport: {fileID: 1538848496}
+  teleport2: {fileID: 1177596861}
   spawns:
   - {fileID: 682304519}
   - {fileID: 887722794}
@@ -1176,7 +1177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5390479782929257208, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390479782929257209, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
       propertyPath: m_Color.b
@@ -1243,6 +1244,11 @@ PrefabInstance:
 --- !u!4 &1177596860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5390479782929257214, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
+  m_PrefabInstance: {fileID: 1177596859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1177596861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5390479782929257208, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
   m_PrefabInstance: {fileID: 1177596859}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1299596126
@@ -1714,7 +1720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5390479782929257208, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5390479782929257212, guid: 0463a47c12c256c44a8ef821775b8622, type: 3}
       propertyPath: scene

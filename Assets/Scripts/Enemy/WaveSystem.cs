@@ -8,6 +8,7 @@ public class WaveSystem : MonoBehaviour
     public static WaveSystem Instance;
 
     [SerializeField] private GameObject teleport;
+    [SerializeField] private GameObject teleport2;
 
     [SerializeField] private Transform[] spawns;
     [SerializeField] private GameObject[] enemies;
@@ -69,6 +70,7 @@ public class WaveSystem : MonoBehaviour
                 roundText.text = "Opened teleport";
                 textAnim.Play("round_text", 0, 0);
                 teleport.SetActive(true);
+                teleport2.SetActive(true);
             }
         }
     }
