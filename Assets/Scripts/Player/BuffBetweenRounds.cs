@@ -38,30 +38,30 @@ public class BuffBetweenRounds : MonoBehaviour
         if (buff1 != null) Destroy(buff1);
         if (buff2 != null) Destroy(buff2);
         if (buff3 != null) Destroy(buff3);
+        tmp = null;
+        tmp2 = null;
         spawned = false;
     }
 
     private GameObject getRandomItem()
     {
         GameObject random = buffs[Random.Range(0, buffs.Length)];
-        Debug.Log(random + " random");
+
         if (tmp == null)
         {
             tmp = random;
-            Debug.Log(tmp + " tmp");
             return tmp;
         }
         else if(tmp2 == null)
         {
             tmp2 = tmp == random ? getRandomItem() : random;
-            Debug.Log(tmp2 + " tmp2");
             return tmp2;
         }
-
-        if (tmp != random && tmp2 != random)
+        else if (tmp != random && tmp2 != random)
         {
             return random;
         }
+
         return getRandomItem();
     }
 }
