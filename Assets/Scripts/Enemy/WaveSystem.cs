@@ -24,8 +24,8 @@ public class WaveSystem : MonoBehaviour
     private int currentEnemy = 0;
 
     private float cooldown = 0;
-    private float betweenEnemies = 3.5f;
-    private float betweenRounds = 10;
+    private float betweenEnemies = 2f;
+    private float betweenRounds = 6;
 
     private bool pickedUp = false;
 

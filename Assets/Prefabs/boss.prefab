@@ -476,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   stopDistance: 23
+  randomRange: 0
 --- !u!50 &1418080533173524627
 Rigidbody2D:
   serializedVersion: 4

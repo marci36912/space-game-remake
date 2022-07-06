@@ -7,6 +7,7 @@ public class BulletEnemy : Bullet
     protected override void doOnTrigger(Collider2D collision)
     {
         if (collision.tag == "wall") Destroy(gameObject);
+        if (MozgasPlayer.damageable) return;
         var tmp = collision.GetComponent<PlayerHealth>();
         if (tmp == null) return;
 

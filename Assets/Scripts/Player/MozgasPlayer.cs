@@ -6,6 +6,8 @@ public class MozgasPlayer : Mozgas
 {
     [SerializeField] private EnergyBar energyBar;
 
+    public static bool damageable { get; private set; }
+
     private float horizontalis;
     private float vertikalis;
 
@@ -32,6 +34,7 @@ public class MozgasPlayer : Mozgas
 
     private void onDeath()
     {
+        entity.bodyType = RigidbodyType2D.Static;
         enabled = false;
     }
 
@@ -65,18 +68,20 @@ public class MozgasPlayer : Mozgas
             AudioManager.Instance.PlayDash();
             length = 0.3f;
             speedActive = dash;
-            dashCoolDown = Time.time + 4;
+            dashCoolDown = Time.time + 6;
             if(Shooting.Instance != null) Shooting.Instance.reload();
             energyBar.nullTheValue();
         }
 
         if (length > 0)
         {
+            damageable = true;
             length -= Time.deltaTime;
 
             if (length <= 0)
             {
                 speedActive = speed;
+                damageable = false;
             }
         }
         dashing = false;

@@ -17,7 +17,7 @@ public class PlayerHealth : Health
     }
 
     public override void getDamage(int n)
-    {
+    { 
         base.getDamage(n);
         AudioManager.Instance.PlayPlayerHurt();
     }

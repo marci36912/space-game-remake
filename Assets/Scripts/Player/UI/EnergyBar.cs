@@ -10,7 +10,7 @@ public class EnergyBar : MonoBehaviour
     private void Start()
     {
         energyBar = GetComponent<Slider>();
-        energyBar.maxValue = 4;
+        energyBar.maxValue = 6;
         energyBar.value = energyBar.maxValue;
     }
 

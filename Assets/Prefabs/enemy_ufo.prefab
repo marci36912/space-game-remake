@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 4981938189182436036, guid: 6928566eb2adc4740b77197b47e67a54, type: 3}
-  cooldownTime: 6
+  cooldownTime: 4
   damage: 15
   velocity: 13
   spread: 0
@@ -253,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   stopDistance: 6
+  randomRange: 8
 --- !u!50 &259746411508886460
 Rigidbody2D:
   serializedVersion: 4

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MozgasEnemy : Mozgas
 {
     [SerializeField] private float stopDistance;
+    [SerializeField] private float randomRange = 8;
 
     private Transform playerTransform;
 
@@ -19,7 +20,7 @@ public class MozgasEnemy : Mozgas
 
         playerTransform = GameObject.Find("Player").transform;
 
-        offset = new Vector3(Random.Range(-8, 8), Random.Range(-8, 8), 0);
+        offset = new Vector3(Random.Range(-randomRange, randomRange), Random.Range(-8, 8), 0);
     }
 
     private void FixedUpdate()

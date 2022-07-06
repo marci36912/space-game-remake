@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Shooting : MonoBehaviour
 {
@@ -9,28 +10,33 @@ public class Shooting : MonoBehaviour
     [SerializeField] protected GameObject lovedek;
     [SerializeField] private int n;
 
+    private TextMeshProUGUI bulletText;
+
     private KeyCode loves;
 
     private bool active;
 
     private Transform shootPoint;
     private Gun stats;
+    private int magazine;
 
     private static float cooldown = 0;
 
     private void Start()
     {
         Instance = this;
-
+        bulletText = GameObject.Find("bulletText").GetComponent<TextMeshProUGUI>();
         stats = GunStats.ReturnGun(n);
         shootPoint = transform.Find("AimPoint");
         loves = KeyCode.Mouse0;
-
+        magazine = stats.Magazine;
+        bulletText.text = magazineStatus();
         PlayerHealth.OnPlayerDeath += onDeath;
     }
 
     private void OnDestroy()
     {
+        bulletText.text = "";
         PlayerHealth.OnPlayerDeath -= onDeath;
     }
 
@@ -45,10 +51,9 @@ public class Shooting : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (active)
-        {
-            shooting();
-        }
+        reloading();
+
+        if (active) shooting();
     }
 
     private Transform angle()
@@ -56,23 +61,51 @@ public class Shooting : MonoBehaviour
         return transform.parent.gameObject.transform;
     }
 
+    private void reloading()
+    {
+        if (magazine != stats.Magazine && Input.GetKeyDown(KeyCode.R) && onCooldown())
+        {
+            magazine = stats.Magazine;
+            cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
+            bulletText.text = magazineStatus();
+        }
+        else if (isEmpty() && onCooldown())
+        {
+            magazine = stats.Magazine;
+            cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
+            bulletText.text = magazineStatus();
+        }
+    }
     private void shooting()
     {
-        if (onCooldown())
+        if (onCooldown() && !isEmpty())
         {
             for (int i = 0; i < stats.BulletCount; i++)
             {
                 GameObject bullet = Instantiate(lovedek, shootPoint.position, angle().rotation);
                 bullet.GetComponent<Bullet>().setStats(angle(), (int)(stats.Damage * Buffs.Damage), (int)(stats.Velocity * Buffs.Velocity), getSpread());
-                cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
+                cooldown = Time.time + 0.6f;
             }
+            magazine--;
+            bulletText.text = magazineStatus();
             AudioManager.Instance.PlayPlayerShoot();
         }
     }
 
+    private string magazineStatus()
+    {
+        return magazine + "/" + stats.Magazine;
+    }
+
+    private bool isEmpty()
+    {
+        return magazine == 0;
+    }
+
     public void reload()
     {
-        cooldown = 0;
+        magazine = stats.Magazine;
+        bulletText.text = magazineStatus();
     }
     private float getSpread()
     {
