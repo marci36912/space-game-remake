@@ -305,11 +305,19 @@ MonoBehaviour:
   music: {fileID: 1646676392406506641}
   effect: {fileID: 1646676392705046086}
   effects:
-  - {fileID: 8300000, guid: 87f3926af71df5145a21bb569670c1cb, type: 3}
-  - {fileID: 8300000, guid: a9e99a83c523e7b4d8d574af737e385a, type: 3}
-  - {fileID: 8300000, guid: a9419d94a203f024da0118f99dd4aebc, type: 3}
-  - {fileID: 8300000, guid: 9d2e069f1bb5f684ba9272f0731529d5, type: 3}
-  - {fileID: 8300000, guid: eca445fae9d9a7740aefc76beaf01329, type: 3}
-  - {fileID: 8300000, guid: c09139e0a81470046a4b2f94db833303, type: 3}
-  - {fileID: 8300000, guid: c6619fa33d8ca3742b18b4c052321b86, type: 3}
-  - {fileID: 8300000, guid: d3a9d876acbc9eb4194d640083868dfa, type: 3}
+  - Effect: {fileID: 8300000, guid: 87f3926af71df5145a21bb569670c1cb, type: 3}
+    id: 0
+  - Effect: {fileID: 8300000, guid: a9e99a83c523e7b4d8d574af737e385a, type: 3}
+    id: 1
+  - Effect: {fileID: 8300000, guid: a9419d94a203f024da0118f99dd4aebc, type: 3}
+    id: 2
+  - Effect: {fileID: 8300000, guid: 9d2e069f1bb5f684ba9272f0731529d5, type: 3}
+    id: 3
+  - Effect: {fileID: 8300000, guid: eca445fae9d9a7740aefc76beaf01329, type: 3}
+    id: 4
+  - Effect: {fileID: 8300000, guid: c09139e0a81470046a4b2f94db833303, type: 3}
+    id: 5
+  - Effect: {fileID: 8300000, guid: c6619fa33d8ca3742b18b4c052321b86, type: 3}
+    id: 6
+  - Effect: {fileID: 8300000, guid: d3a9d876acbc9eb4194d640083868dfa, type: 3}
+    id: 7

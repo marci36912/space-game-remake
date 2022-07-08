@@ -36,7 +36,7 @@ public class Sword : MonoBehaviour
             hitManager();
             collisionDetect();
             time = cooldown + Time.time;
-            AudioManager.Instance.PlaySword();
+            AudioManager.Instance.PlayEffect(SoundIds.PlayerHurt);
         }
     }
 

@@ -88,7 +88,7 @@ public class Shooting : MonoBehaviour
             }
             magazine--;
             bulletText.text = magazineStatus();
-            AudioManager.Instance.PlayPlayerShoot();
+            AudioManager.Instance.PlayEffect(SoundIds.PlayerShoot);
         }
     }
 

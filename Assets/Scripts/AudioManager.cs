@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource effect;
 
-    [SerializeField] private AudioClip[] effects;
+    [SerializeField] private EffectStorage[] effects;
     //Dash 0, EnemyShoot 1, Pickup 2, PlayerExplosion 3, PlayerHurt 4, PlayerShoot 5, RobotExplosion 6, Sword 7
 
     #region setVolumes
@@ -36,51 +36,24 @@ public class AudioManager : MonoBehaviour
         effect.volume = EffectVolume;
     }
 
-    #region effects
-    public void PlayDash()
+    public void PlayEffect(SoundIds id)
     {
-        effect.clip = effects[((int)SoundIds.Dash)];
+        effect.clip = getEffectClip(id);
         effect.Play();
     }
-    public void PlayEnemyShoot()
+
+    private AudioClip getEffectClip(SoundIds id)
     {
-        effect.clip = effects[((int)SoundIds.EnemyShoot)];
-        effect.Play();
+        foreach(var effect in effects)
+        {
+            if(effect.id == id)
+            {
+                return effect.Effect;
+            }
+        }
+        return null;
     }
-    public void PlayPickUp()
-    {
-        effect.clip = effects[((int)SoundIds.PickUp)];
-        effect.Play();
-    }
-    public void PlayPlayerExplosion()
-    {
-        effect.clip = effects[((int)SoundIds.PlayerExplosion)];
-        effect.Play();
-    }
-    public void PlayPlayerHurt()
-    {
-        effect.clip = effects[((int)SoundIds.PlayerHurt)];
-        effect.Play();
-    }
-    public void PlayPlayerShoot()
-    {
-        effect.clip = effects[((int)SoundIds.PlayerShoot)];
-        effect.Play();
-    }
-    public void PlayRobotExplosion()
-    {
-        effect.clip = effects[((int)SoundIds.RobotExplosion)];
-        effect.Play();
-    }
-    public void PlaySword()
-    {
-        effect.clip = effects[((int)SoundIds.Sword)];
-        effect.Play();
-    }
-    #endregion
 }
-
-
 
 public enum SoundIds
 {
@@ -92,4 +65,11 @@ public enum SoundIds
     PlayerShoot,
     RobotExplosion,
     Sword
+}
+
+[System.Serializable]
+class EffectStorage
+{
+public AudioClip Effect;
+public SoundIds id;
 }

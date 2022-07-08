@@ -14,7 +14,11 @@ public class Health : MonoBehaviour
 
     public virtual void Death()
     {
-        
+        if (SetHealth <= 0)
+        {
+            Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
     public virtual void getDamage(int n)
     {

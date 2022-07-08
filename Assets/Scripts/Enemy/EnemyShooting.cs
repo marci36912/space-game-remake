@@ -30,7 +30,7 @@ public class EnemyShooting : MonoBehaviour
             GameObject bulletTMP = Instantiate(bullet, transform.position, Quaternion.identity);
             bulletTMP.GetComponent<BulletEnemy>().setStats(transform, (int)damage, (int)velocity, getSpread());
         }
-        AudioManager.Instance.PlayEnemyShoot();
+        AudioManager.Instance.PlayEffect(SoundIds.EnemyShoot);
         cooldown = Time.time + cooldownTime;
     }
 

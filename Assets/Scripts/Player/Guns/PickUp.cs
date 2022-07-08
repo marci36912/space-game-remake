@@ -49,7 +49,7 @@ public class PickUp : MonoBehaviour
         if (Input.GetKey(KeyCode.E) && Wallet.Instance.Buy(price))
         {
             player.transform.Find("rotation").GetComponentInChildren<GetGun>().SetGun(n);
-            AudioManager.Instance.PlayPickUp();
+            AudioManager.Instance.PlayEffect(SoundIds.PickUp);
             Destroy(gameObject);
             return;
         }

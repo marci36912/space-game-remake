@@ -46,7 +46,7 @@ public class BuffPickup : MonoBehaviour
         if (Input.GetKey(KeyCode.E) && Wallet.Instance.Buy(price))
         {
             buff();
-            AudioManager.Instance.PlayPickUp();
+            AudioManager.Instance.PlayEffect(SoundIds.PickUp);
             Destroy(gameObject);
             return;
         }

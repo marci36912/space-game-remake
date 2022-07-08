@@ -32,12 +32,13 @@ public class EnemyHealth : Health, IHpManager
 
     public override void Death()
     {
+        base.Death();
         if (SetHealth <= 0)
         {
             Instantiate(particles, transform.position, Quaternion.identity);
             Wallet.Instance.addAmmount(money);
             wave.enemyDeath();
-            AudioManager.Instance.PlayRobotExplosion();
+            AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
             Destroy(gameObject);
         }
     }

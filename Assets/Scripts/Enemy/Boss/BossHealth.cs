@@ -67,7 +67,7 @@ public class BossHealth : Health, IHpManager
         if (SetHealth <= 0)
         {
             teleport.SetActive(true);
-            AudioManager.Instance.PlayRobotExplosion();
+            AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
             Instantiate(particles, transform.position, Quaternion.identity);
             Wallet.Instance.addAmmount(1000);
             if(destroyThem != null) destroyThem();

@@ -19,16 +19,15 @@ public class PlayerHealth : Health
     public override void getDamage(int n)
     { 
         base.getDamage(n);
-        AudioManager.Instance.PlayPlayerHurt();
+        AudioManager.Instance.PlayEffect(SoundIds.PlayerHurt);
     }
     public override void Death()
     {
         if (SetHealth <= 0 && !dead)
         {
-            base.Death();
             GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             dead = true;
-            AudioManager.Instance.PlayPlayerExplosion();
+            AudioManager.Instance.PlayEffect(SoundIds.PlayerExplosion);
             Instantiate(particles, transform.position, Quaternion.identity);
             Invoke("backToTheMenu", 3);
             OnPlayerDeath();
