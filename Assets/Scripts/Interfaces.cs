@@ -1,8 +1,4 @@
 using UnityEngine;
-interface IEnemyZone
-{
-    bool playerZone();
-}
 
 interface IHpManager
 {

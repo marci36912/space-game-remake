@@ -10,6 +10,7 @@ public class PlayerHealth : Health
 
     private int maxHealth;
     private bool dead = false;
+    
     private void Awake()
     {
         maxHealth = 100 + Buffs.Hp;
@@ -23,7 +24,7 @@ public class PlayerHealth : Health
     }
     public override void Death()
     {
-        if (SetHealth <= 0 && !dead)
+        if (!dead)
         {
             GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             dead = true;

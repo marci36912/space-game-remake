@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class MozgasPlayer : Mozgas
 {
+    public static bool damageable { get; private set; }
+    public static int DashCoolDownTime { get; private set; } = 6;
+
     [SerializeField] private EnergyBar energyBar;
 
-    public static bool damageable { get; private set; }
-
-    private float horizontalis;
-    private float vertikalis;
-
     private float dashCoolDown = 0;
-    private float dash = 23;
-    private float length = 0.3f;
-
+    private float dashSpeed = 23;
+    private float dashLength = 0.2f;
+    private float horizontal;
+    private float vertical;
     private float speedActive;
-
     private bool dashing = false;
 
     protected override void doOnStart()
     {
         base.doOnStart();
-
         speedActive = speed;
         PlayerHealth.OnPlayerDeath += onDeath;
     }
@@ -40,45 +37,37 @@ public class MozgasPlayer : Mozgas
 
     private void Update()
     {
-        horizontalis = Input.GetAxisRaw("Horizontal");
-        vertikalis = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        CheckForDash();
+        if(Input.GetKeyDown(KeyCode.Space)) dashing = true;
     }
 
     private void FixedUpdate()
     {
-        entity.velocity = (new Vector2(horizontalis, vertikalis).normalized * speedActive);
+        entity.velocity = (new Vector2(horizontal, vertical).normalized * speedActive);
 
         Dash();
     }
 
-
-    private void CheckForDash()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dashing = true;
-        }
-    }
     private void Dash()
     {
-        if (dashing && dashCoolDown <= Time.time && length <= 0)
+        if (dashing && dashCoolDown <= Time.time && dashLength <= 0)
         {
             AudioManager.Instance.PlayEffect(SoundIds.Dash);
-            length = 0.2f;
-            speedActive = dash;
-            dashCoolDown = Time.time + 6;
+            dashLength = 0.2f;
+            speedActive = dashSpeed;
+            dashCoolDown = Time.time + DashCoolDownTime;
             if(Shooting.Instance != null) Shooting.Instance.reload();
             energyBar.nullTheValue();
         }
 
-        if (length > 0)
+        if (dashLength > 0)
         {
             damageable = true;
-            length -= Time.deltaTime;
+            dashLength -= Time.deltaTime;
 
-            if (length <= 0)
+            if (dashLength <= 0)
             {
                 speedActive = speed;
                 damageable = false;

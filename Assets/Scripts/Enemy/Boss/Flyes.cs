@@ -17,7 +17,7 @@ public class Flyes : MonoBehaviour
 
     private void destroyMe()
     {
-        Instantiate(death, transform.position, Quaternion.identity);
+        if(death != null) Instantiate(death, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

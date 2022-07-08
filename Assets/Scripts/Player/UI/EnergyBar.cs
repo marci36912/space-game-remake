@@ -10,7 +10,7 @@ public class EnergyBar : MonoBehaviour
     private void Start()
     {
         energyBar = GetComponent<Slider>();
-        energyBar.maxValue = 6;
+        energyBar.maxValue = MozgasPlayer.DashCoolDownTime;
         energyBar.value = energyBar.maxValue;
     }
 

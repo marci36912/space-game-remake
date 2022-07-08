@@ -15,11 +15,11 @@ public class EnemyAim : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rotationVector.z = rotation();
+        rotationVector.z = zRotation();
         transform.eulerAngles = rotationVector;
     }
 
-    private float rotation()
+    private float zRotation()
     {
         Vector3 tmp = playerTransform.transform.position - transform.position;
         return (Mathf.Atan2(tmp.y, tmp.x) * Mathf.Rad2Deg);

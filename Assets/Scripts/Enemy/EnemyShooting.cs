@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
-
     [SerializeField] private float cooldownTime, damage, velocity, spread, bulletCount;
 
     private float cooldown;

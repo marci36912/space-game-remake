@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
             {
                 Buffs.Instance.HpBuff();
             }
-            Wallet.Instance.addAmmount(1000);
+            Wallet.Instance.addMoney(1000);
         }
         else
         {

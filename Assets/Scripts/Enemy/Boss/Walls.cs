@@ -14,6 +14,6 @@ public class Walls : MonoBehaviour
     }
     private void wallChange()
     {
-        gameObject.SetActive(!gameObject.activeInHierarchy);
+        gameObject.SetActive(false);
     }
 }

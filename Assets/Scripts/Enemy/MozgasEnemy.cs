@@ -8,11 +8,10 @@ public class MozgasEnemy : Mozgas
     [SerializeField] private float randomRange = 8;
 
     private Transform playerTransform;
-
     private Vector3 offset;
 
-    private bool flip = false;
     private float distance;
+    private bool flip = false;
 
     protected override void doOnStart()
     {
@@ -25,11 +24,11 @@ public class MozgasEnemy : Mozgas
 
     private void FixedUpdate()
     {
-        mozgas();
+        moveToPlayer();
         flipCheck();
     }
 
-    private void mozgas()
+    private void moveToPlayer()
     {
         if (stop())
         {

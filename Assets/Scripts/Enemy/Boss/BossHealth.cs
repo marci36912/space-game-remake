@@ -8,8 +8,7 @@ public class BossHealth : Health, IHpManager
     public delegate void destroyFlyes();
     public static event destroyFlyes destroyThem;
 
-    [SerializeField] private GameObject teleport;
-
+    [SerializeField] private GameObject lobbyTeleport;
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject flyers;
     [SerializeField] private GameObject smoke;
@@ -22,7 +21,6 @@ public class BossHealth : Health, IHpManager
     private bool secondStage = false;
     private bool thirdStage = false;
 
-
     private void Start()
     {
         SetHealth = MaxHealth;
@@ -32,13 +30,13 @@ public class BossHealth : Health, IHpManager
 
     private void stageCheck()
     {
-        if (healthPercentage(50) && !secondStage)
+        if (healthPercentage(0.5f) && !secondStage)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = stages[0];
             secondStage = true;
             shield.SetActive(true);
         }
-        else if (healthPercentage(15) && !thirdStage)
+        else if (healthPercentage(0.15f) && !thirdStage)
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = stages[1];
             thirdStage = true;
@@ -50,9 +48,9 @@ public class BossHealth : Health, IHpManager
         }
     }
 
-    private bool healthPercentage(int n)
+    private bool healthPercentage(float n)
     {
-        return (healthBar.value / healthBar.maxValue * 100) <= n;
+        return (healthBar.value / healthBar.maxValue) <= n;
     }
 
     public override void getDamage(int n)
@@ -64,14 +62,10 @@ public class BossHealth : Health, IHpManager
 
     public override void Death()
     {
-        if (SetHealth <= 0)
-        {
-            teleport.SetActive(true);
-            AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
-            Instantiate(particles, transform.position, Quaternion.identity);
-            Wallet.Instance.addAmmount(1000);
-            if(destroyThem != null) destroyThem();
-            Destroy(gameObject);
-        }
+        lobbyTeleport.SetActive(true);
+        AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
+        Wallet.Instance.addMoney(1000);
+        if(destroyThem != null) destroyThem();
+        base.Death();
     }
 }

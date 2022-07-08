@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - lovedek: {fileID: 47071023234193484, guid: 06d6b2d2c3bffd545b1e74220e8dcff5, type: 3}
+  - bulletObject: {fileID: 47071023234193484, guid: 06d6b2d2c3bffd545b1e74220e8dcff5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

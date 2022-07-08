@@ -7,33 +7,31 @@ public class Shooting : MonoBehaviour
 {
     public static Shooting Instance;
 
-    [SerializeField] protected GameObject lovedek;
-    [SerializeField] private int n;
+    [SerializeField] private GameObject bulletObject;
+    [SerializeField] private Guns n;
 
     private TextMeshProUGUI bulletText;
-
-    private KeyCode loves;
-
-    private bool active;
-
-    private Transform shootPoint;
+    private Transform aimPoint; //where the bullets come from
+    private Transform gunPoint; //the arm that holds the gun
     private Gun stats;
     private int magazine;
-
     private static float cooldown = 0;
+    private bool isShooting;
 
     private void Start()
     {
         Instance = this;
+
         bulletText = GameObject.Find("bulletText").GetComponent<TextMeshProUGUI>();
+        aimPoint = transform.Find("AimPoint");
         stats = GunStats.ReturnGun(n);
-        shootPoint = transform.Find("AimPoint");
-        loves = KeyCode.Mouse0;
+
         magazine = stats.Magazine;
         bulletText.text = magazineStatus();
+
         PlayerHealth.OnPlayerDeath += onDeath;
     }
-
+#region playerdeath
     private void OnDestroy()
     {
         bulletText.text = "";
@@ -44,21 +42,16 @@ public class Shooting : MonoBehaviour
     {
         enabled = false;
     }
+    #endregion
     private void Update()
     {
-        active = Input.GetKey(loves);
+        isShooting = Input.GetKey(KeyCode.Mouse0);
+        reloading();
     }
 
     private void FixedUpdate()
     {
-        reloading();
-
-        if (active) shooting();
-    }
-
-    private Transform angle()
-    {
-        return transform.parent.gameObject.transform;
+        if (isShooting) shooting();
     }
 
     private void reloading()
@@ -82,8 +75,8 @@ public class Shooting : MonoBehaviour
         {
             for (int i = 0; i < stats.BulletCount; i++)
             {
-                GameObject bullet = Instantiate(lovedek, shootPoint.position, angle().rotation);
-                bullet.GetComponent<Bullet>().setStats(angle(), (int)(stats.Damage * Buffs.Damage), (int)(stats.Velocity * Buffs.Velocity), getSpread());
+                GameObject bullet = Instantiate(bulletObject, aimPoint.position, gunPointTransform().rotation);
+                bullet.GetComponent<Bullet>().setStats(gunPointTransform(), (int)(stats.Damage * Buffs.Damage), (int)(stats.Velocity * Buffs.Velocity), getRandomSpread());
                 cooldown = Time.time + 0.6f;
             }
             magazine--;
@@ -91,15 +84,21 @@ public class Shooting : MonoBehaviour
             AudioManager.Instance.PlayEffect(SoundIds.PlayerShoot);
         }
     }
-
+    private Transform gunPointTransform()
+    {
+        return transform.parent.gameObject.transform;
+    }
     private string magazineStatus()
     {
         return magazine + "/" + stats.Magazine;
     }
-
     private bool isEmpty()
     {
         return magazine == 0;
+    }
+    private float getRandomSpread()
+    {
+        return Random.Range(-stats.Spread, stats.Spread + 1);
     }
 
     public void reload()
@@ -107,11 +106,6 @@ public class Shooting : MonoBehaviour
         magazine = stats.Magazine;
         bulletText.text = magazineStatus();
     }
-    private float getSpread()
-    {
-        return Random.Range(-stats.Spread, stats.Spread + 0.1f);
-    }
-
     public static bool onCooldown()
     {
         return cooldown <= Time.time;

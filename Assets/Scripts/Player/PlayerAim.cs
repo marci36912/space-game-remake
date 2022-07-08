@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    private Transform aimPoint;
-
+    private Transform armRotation;
     private Vector3 mousePos;
-    private float angle;
-
+    private float mouseZAngle;
     private bool flip = true;
 
     private void Start()
     {
-        aimPoint = transform.Find("rotation");
+        armRotation = transform.Find("rotation");
         PlayerHealth.OnPlayerDeath += onDeath;
     }
 
@@ -31,11 +29,11 @@ public class PlayerAim : MonoBehaviour
         direction();
         
 
-        if (Mathf.Abs(angle) < 85 && flip == false)
+        if (Mathf.Abs(mouseZAngle) < 85 && flip == false)
         {
             flipPlayer();
         }
-        else if (Mathf.Abs(angle) > 95 && flip == true)
+        else if (Mathf.Abs(mouseZAngle) > 95 && flip == true)
         {
             flipPlayer();
         }
@@ -44,10 +42,10 @@ public class PlayerAim : MonoBehaviour
     private void direction()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        angle = Mathf.Atan2(mousePos.y, mousePos.x);
-        angle = Mathf.Rad2Deg * angle;
+        mouseZAngle = Mathf.Atan2(mousePos.y, mousePos.x);
+        mouseZAngle = Mathf.Rad2Deg * mouseZAngle;
 
-        aimPoint.eulerAngles = new Vector3(0, 0, angle);
+        armRotation.eulerAngles = new Vector3(0, 0, mouseZAngle);
     }
 
     private void flipPlayer()
@@ -55,6 +53,6 @@ public class PlayerAim : MonoBehaviour
         flip = !flip;
 
         transform.Rotate(0f, 180f, 0f);
-        aimPoint.localScale = new Vector3(aimPoint.localScale.x, aimPoint.localScale.y * -1, aimPoint.localScale.z);
+        armRotation.localScale = new Vector3(armRotation.localScale.x, armRotation.localScale.y * -1, armRotation.localScale.z);
     }
 }

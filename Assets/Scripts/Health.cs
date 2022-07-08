@@ -9,16 +9,16 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        Death();
+        if (SetHealth <= 0)
+        {
+            Death();
+        }
     }
 
     public virtual void Death()
     {
-        if (SetHealth <= 0)
-        {
-            Instantiate(particles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        if(particles != null) Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
     public virtual void getDamage(int n)
     {

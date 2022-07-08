@@ -5,27 +5,27 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     private float speed = 15;
-    private float rotation = 0;
+    private float zRotation = 0;
     private bool clockwise = true;
 
     private void Update()
     {
         if (clockwise)
         {
-            rotation += Time.deltaTime * speed;
+            zRotation += Time.deltaTime * speed;
         }
         else
         {
-            rotation -= Time.deltaTime * speed;
+            zRotation -= Time.deltaTime * speed;
         }
 
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
+        transform.rotation = Quaternion.Euler(0, 0, zRotation);
 
-        if (rotation >= 380)
+        if (zRotation >= 380)
         {
             clockwise = !clockwise;
         }
-        else if(rotation <= -20)
+        else if(zRotation <= -20)
         {
             clockwise = !clockwise;
         }

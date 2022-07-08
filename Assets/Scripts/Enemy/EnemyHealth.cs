@@ -7,18 +7,15 @@ public class EnemyHealth : Health, IHpManager
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private Image fillArea;
-
     [SerializeField] private Transform healthPosition;
-
     [SerializeField] private int money;
-
+    [SerializeField] private int maxHealth;
     private WaveSystem wave;
 
     private void Start()
     {
         wave = gameObject.GetComponentInParent<WaveSystem>();
-        SetHealth = 100;
-
+        SetHealth = maxHealth;
         healthBar.maxValue = SetHealth;
     }
 
@@ -32,14 +29,9 @@ public class EnemyHealth : Health, IHpManager
 
     public override void Death()
     {
+        Wallet.Instance.addMoney(money);
+        wave.enemyDeath();
+        AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
         base.Death();
-        if (SetHealth <= 0)
-        {
-            Instantiate(particles, transform.position, Quaternion.identity);
-            Wallet.Instance.addAmmount(money);
-            wave.enemyDeath();
-            AudioManager.Instance.PlayEffect(SoundIds.RobotExplosion);
-            Destroy(gameObject);
-        }
     }
 }

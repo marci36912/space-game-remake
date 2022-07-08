@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    private static float cooldown = 0;
+
     private Animator anim;
     private Transform hitReg;
-
+    private float cooldownTime = 1;
     private int hit = 0;
-
-    private bool mouseDown;
-
     private int damage = 50;
-
-    private float cooldown = 1;
-    private static float time = 0;
-
+    private bool mouseDown;
+    
     private void Start()
     {
         anim = FindObjectOfType<Animator>();
@@ -33,9 +30,9 @@ public class Sword : MonoBehaviour
         if (mouseDown && onCooldown())
         {
             mouseDown = false;
-            hitManager();
+            hitAnimation();
             collisionDetect();
-            time = cooldown + Time.time;
+            cooldown = cooldownTime + Time.time;
             AudioManager.Instance.PlayEffect(SoundIds.PlayerHurt);
         }
     }
@@ -60,7 +57,7 @@ public class Sword : MonoBehaviour
         return new Vector2(hitReg.transform.position.x, hitReg.transform.position.y);
     }
 
-    private void hitManager()
+    private void hitAnimation()
     {
         if (hit == 0)
         {
@@ -76,6 +73,6 @@ public class Sword : MonoBehaviour
 
     public static bool onCooldown()
     {
-        return time <= Time.time;
+        return cooldown <= Time.time;
     }
 }
