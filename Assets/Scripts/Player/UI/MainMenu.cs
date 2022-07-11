@@ -13,9 +13,9 @@ public class MainMenu : MonoBehaviour
         Starter.pickedUp = false;
     }
 
-    public void showHelp(bool help)
+    public void showHelp()
     {
-        easy.enabled = help;
+        easy.enabled = !easy.enabled;
     }
 
     public void easyMode(bool easy)
