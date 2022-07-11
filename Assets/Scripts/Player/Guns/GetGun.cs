@@ -14,7 +14,6 @@ public class GetGun : MonoBehaviour
     }
     public void SetGun(int n)
     {
-        Debug.Log(activeGun);
         if (transform.childCount != 0)
         {
             Destroy(activeGun);

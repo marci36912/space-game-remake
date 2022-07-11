@@ -29,6 +29,7 @@ public class Cannonball : Bullet
         if(!playedExplosion && explosion != null)
         { 
             Instantiate(explosion, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlayEffect(SoundIds.Explosion);
             playedExplosion = true;
         }
     }

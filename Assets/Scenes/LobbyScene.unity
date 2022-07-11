@@ -130,12 +130,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313426517, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313426517, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 313426517, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1253142122, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1253142122, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520510374, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520510374, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520510374, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
+      propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1528016823, guid: 67b996feeaf290d479abd5fec7144f05, type: 3}
@@ -408,6 +432,7 @@ MonoBehaviour:
   - {fileID: 5170875914693460989, guid: 0df10dd8b223a8d49b2625323777908b, type: 3}
   - {fileID: 5237303942567379481, guid: 85fab4235cae61d46b80716eaf05ec9c, type: 3}
   - {fileID: 4836446532166922305, guid: 724d8fbb1377a3744bb760da1c796eeb, type: 3}
+  - {fileID: 5464284441965561017, guid: 73dc83cd52b498744aaab5d572c4da7f, type: 3}
   weaponsSpawn:
   - {fileID: 1120711198}
   - {fileID: 1630526201}

@@ -64,7 +64,8 @@ public enum SoundIds
     PlayerHurt,
     PlayerShoot,
     RobotExplosion,
-    Sword
+    Sword,
+    Explosion
 }
 
 [System.Serializable]

@@ -18,7 +18,21 @@ public class Sword : MonoBehaviour
         anim = FindObjectOfType<Animator>();
         hitReg = transform.parent;
         damage = (int)(damage * Buffs.SwordDamage);
+        PlayerHealth.OnPlayerDeath += onDeath;
     }
+
+    #region playerdeath
+    private void OnDestroy()
+    {
+        PlayerHealth.OnPlayerDeath -= onDeath;
+    }
+
+    private void onDeath()
+    {
+        enabled = false;
+        Destroy(gameObject);
+    }
+    #endregion
 
     private void Update()
     {

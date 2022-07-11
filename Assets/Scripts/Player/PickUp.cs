@@ -7,14 +7,13 @@ public class PickUp : MonoBehaviour
 {
     [SerializeField] protected int price;
     [SerializeField] protected string itemName;
-
     protected TextMeshPro priceTag;
     private bool zone;
     protected GameObject player;
 
-    private void Awake()
+    private void Start()
     {
-        priceTag = transform.GetChild(0).GetComponent<TextMeshPro>();
+        priceTag = transform.Find("Text").GetComponent<TextMeshPro>();
         if(priceTag != null)priceTag.text = $"{itemName} \n {price} gold";
     }
 

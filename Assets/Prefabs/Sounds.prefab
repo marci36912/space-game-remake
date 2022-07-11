@@ -319,5 +319,7 @@ MonoBehaviour:
     id: 5
   - Effect: {fileID: 8300000, guid: c6619fa33d8ca3742b18b4c052321b86, type: 3}
     id: 6
-  - Effect: {fileID: 8300000, guid: d3a9d876acbc9eb4194d640083868dfa, type: 3}
+  - Effect: {fileID: 8300000, guid: 1d0b16b24aa0e81489ecc59fe96fbf13, type: 3}
     id: 7
+  - Effect: {fileID: 8300000, guid: 9faf3b1a28ef8db4eb25f768236b6232, type: 3}
+    id: 8

@@ -45,6 +45,9 @@ public class Inventory : MonoBehaviour
 
         if (guns[0] != null) inventoryImage[0].sprite = guns[0].GetComponent<SpriteRenderer>().sprite;
         if (guns[1] != null) inventoryImage[1].sprite = guns[1].GetComponent<SpriteRenderer>().sprite;
+
+        inventoryImage[0].SetNativeSize();
+        inventoryImage[1].SetNativeSize();
     }
 
     public void setSelected(GameObject gun, GameObject active)
@@ -53,6 +56,7 @@ public class Inventory : MonoBehaviour
         {
             guns[0] = gun;
             inventoryImage[0].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            inventoryImage[0].SetNativeSize();
             if (activeGun != null) Destroy(activeGun);
             activeGun = active;
             selected = 0;
@@ -61,6 +65,7 @@ public class Inventory : MonoBehaviour
         {
             guns[1] = gun;
             inventoryImage[1].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            inventoryImage[1].SetNativeSize();
             if (activeGun != null) Destroy(activeGun);
             activeGun = active;
             selected = 1;
@@ -69,6 +74,7 @@ public class Inventory : MonoBehaviour
         {
             guns[selected] = gun;
             inventoryImage[selected].sprite = gun.GetComponent<SpriteRenderer>().sprite;
+            inventoryImage[selected].SetNativeSize();
             if (activeGun != null) Destroy(activeGun);
             activeGun = active;
         }

@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
         stats = GunStats.ReturnGun(n);
 
         magazine = stats.Magazine;
-        bulletText.text = magazineStatus();
+        magazineStatus();
 
         PlayerHealth.OnPlayerDeath += onDeath;
     }
@@ -41,6 +41,7 @@ public class Shooting : MonoBehaviour
     private void onDeath()
     {
         enabled = false;
+        Destroy(gameObject);
     }
     #endregion
     private void Update()
@@ -60,13 +61,13 @@ public class Shooting : MonoBehaviour
         {
             magazine = stats.Magazine;
             cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
-            bulletText.text = magazineStatus();
+            magazineStatus();
         }
         else if (isEmpty() && onCooldown())
         {
             magazine = stats.Magazine;
             cooldown = Time.time + Mathf.Clamp(stats.Cooldown + Buffs.Cd, 0.4f, stats.Cooldown);
-            bulletText.text = magazineStatus();
+            magazineStatus();
         }
     }
     private void shooting()
@@ -80,7 +81,7 @@ public class Shooting : MonoBehaviour
                 cooldown = Time.time + 0.6f;
             }
             magazine--;
-            bulletText.text = magazineStatus();
+            magazineStatus();
             AudioManager.Instance.PlayEffect(SoundIds.PlayerShoot);
         }
     }
@@ -88,9 +89,9 @@ public class Shooting : MonoBehaviour
     {
         return transform.parent.gameObject.transform;
     }
-    private string magazineStatus()
+    private void magazineStatus()
     {
-        return magazine + "/" + stats.Magazine;
+        bulletText.text = magazine + "/" + stats.Magazine;
     }
     private bool isEmpty()
     {
@@ -104,7 +105,7 @@ public class Shooting : MonoBehaviour
     public void reload()
     {
         magazine = stats.Magazine;
-        bulletText.text = magazineStatus();
+        magazineStatus();
     }
     public static bool onCooldown()
     {

@@ -404,8 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59d37223ec40124aac6fe307c089abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleport: {fileID: 1538848496}
-  teleport2: {fileID: 1177596861}
+  lobbyTeleport: {fileID: 1538848496}
+  bossTeleport: {fileID: 1177596861}
   spawns:
   - {fileID: 682304519}
   - {fileID: 887722794}
