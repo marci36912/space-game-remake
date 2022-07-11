@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class BuffPickup : PickUp
+public class GunPickup : PickUp
 {
+    [SerializeField] private int n;
     protected override void pickUp()
     {
         if (Input.GetKey(KeyCode.E) && Wallet.Instance.Buy(price))
         {
-            buff();
+            player.transform.Find("rotation").GetComponentInChildren<GetGun>().SetGun(n);
             AudioManager.Instance.PlayEffect(SoundIds.PickUp);
             Destroy(gameObject);
             return;
         }
-    }
-
-    protected virtual void buff()
-    {
-
     }
 }

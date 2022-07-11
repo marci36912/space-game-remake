@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 6538873492747565645}
   - component: {fileID: 6538873492747565644}
   - component: {fileID: 6538873492747565646}
-  - component: {fileID: 6538873492747565647}
+  - component: {fileID: 2226775879151568462}
   m_Layer: 0
   m_Name: pistol_p
   m_TagString: Untagged
@@ -285,7 +285,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2911453, y: 1.0868335}
   m_EdgeRadius: 0
---- !u!114 &6538873492747565647
+--- !u!114 &2226775879151568462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,9 +294,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6538873492747565643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbc34d0d06290f4782e7e3d06757a63, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ea1a5d70c44cbc469f70e297cf8eafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 100
+  itemName: Pistol
   n: 0
-  price: 10
-  gunName: Pistol

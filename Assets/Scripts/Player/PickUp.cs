@@ -5,18 +5,17 @@ using TMPro;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField] private int n;
-    [SerializeField] private int price;
-    [SerializeField] private string gunName;
+    [SerializeField] protected int price;
+    [SerializeField] private string itemName;
 
     private TextMeshPro priceTag;
     private bool zone;
-    private GameObject player;
+    protected GameObject player;
 
     private void Start()
     {
         priceTag = transform.GetChild(0).GetComponent<TextMeshPro>();
-        priceTag.text = $"{gunName} \n {price} gold";
+        priceTag.text = $"{itemName} \n {price} gold";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,14 +43,8 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void pickUp()
+    protected virtual void pickUp()
     {
-        if (Input.GetKey(KeyCode.E) && Wallet.Instance.Buy(price))
-        {
-            player.transform.Find("rotation").GetComponentInChildren<GetGun>().SetGun(n);
-            AudioManager.Instance.PlayEffect(SoundIds.PickUp);
-            Destroy(gameObject);
-            return;
-        }
+        
     }
 }

@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 5237303942567379483}
   - component: {fileID: 5237303942567379482}
   - component: {fileID: 5237303942567379476}
-  - component: {fileID: 5237303942567379477}
+  - component: {fileID: 4231508466914061516}
   m_Layer: 0
   m_Name: shotgun_p
   m_TagString: Untagged
@@ -285,7 +285,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1719632, y: 0.9591377}
   m_EdgeRadius: 0
---- !u!114 &5237303942567379477
+--- !u!114 &4231508466914061516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,9 +294,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5237303942567379481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbc34d0d06290f4782e7e3d06757a63, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ea1a5d70c44cbc469f70e297cf8eafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 500
+  itemName: Shotgun
   n: 2
-  price: 350
-  gunName: Shotgun
