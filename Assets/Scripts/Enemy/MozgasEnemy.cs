@@ -10,7 +10,7 @@ public class MozgasEnemy : Mozgas
     private Transform playerTransform;
     private Vector3 offset;
     private float distance;
-    //private bool flip = false;
+    private bool flip = false;
 
     protected override void doOnStart()
     {
@@ -43,16 +43,16 @@ public class MozgasEnemy : Mozgas
         else return true;
     }
 
-   //private void flipCheck()
-   //{
-   //    if (!flip && distance > 0) flipEnemy();
-   //    else if (flip && distance < 0) flipEnemy();
-   //}
+   private void flipCheck()
+   {
+       if (!flip && distance > 0) flipEnemy();
+       else if (flip && distance < 0) flipEnemy();
+   }
 
-   //private void flipEnemy()
-   //{
-   //    flip = !flip;
+   private void flipEnemy()
+   {
+       flip = !flip;
 
-   //    transform.Rotate(0f, 180f, 0f);
-   //}
+       transform.Rotate(0f, 180f, 0f);
+   }
 }
