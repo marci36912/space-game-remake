@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 0
-  buffName: Velocity Buff
+  itemName: Vellocity Buff
 --- !u!1 &3011499881881490321
 GameObject:
   m_ObjectHideFlags: 0

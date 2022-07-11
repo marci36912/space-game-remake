@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 100
-  buffName: Gold Buff
+  itemName: Gold Buff
 --- !u!1 &5797982652844510323
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 100
-  buffName: Cooldown Reduction
+  itemName: Cooldown Reduction
 --- !u!1 &5413738589083303202
 GameObject:
   m_ObjectHideFlags: 0

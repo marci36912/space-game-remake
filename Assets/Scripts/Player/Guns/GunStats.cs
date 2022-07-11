@@ -12,10 +12,12 @@ public class GunStats : MonoBehaviour
         Gun pistol = new Gun("Pistol", 15, 13, 0, 1, 1.4f, 4); 
         Gun ar = new Gun("Assault Riffle", 20, 15, 0, 1, 1.8f, 8); 
         Gun shotgun = new Gun("Shotgun", 6, 11, 30f, 9, 2.1f, 3);
+        Gun cannon = new Gun("Cannon", 99, 7, 0, 1, 2.5f, 1);
 
         gunList.Add(pistol);
         gunList.Add(ar);
         gunList.Add(shotgun);
+        gunList.Add(cannon);
     }
 
     public static Gun ReturnGun(Guns n)
@@ -28,5 +30,6 @@ public enum Guns
 {
 pistol,
 ar,
-shotgun
+shotgun,
+cannon
 }

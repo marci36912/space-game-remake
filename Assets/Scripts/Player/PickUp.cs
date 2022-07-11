@@ -6,16 +6,16 @@ using TMPro;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] protected int price;
-    [SerializeField] private string itemName;
+    [SerializeField] protected string itemName;
 
-    private TextMeshPro priceTag;
+    protected TextMeshPro priceTag;
     private bool zone;
     protected GameObject player;
 
-    private void Start()
+    private void Awake()
     {
         priceTag = transform.GetChild(0).GetComponent<TextMeshPro>();
-        priceTag.text = $"{itemName} \n {price} gold";
+        if(priceTag != null)priceTag.text = $"{itemName} \n {price} gold";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
