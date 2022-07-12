@@ -24,7 +24,7 @@ public class MozgasEnemy : Mozgas
     private void FixedUpdate()
     {
         moveToPlayer();
-        //flipCheck();
+        flipCheck();
     }
 
     private void moveToPlayer()
