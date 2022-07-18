@@ -5,7 +5,6 @@ using UnityEngine;
 public class GetGun : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Guns;
-    private GameObject activeGun;
     private Inventory inventory;
 
     private void Start()
@@ -14,12 +13,6 @@ public class GetGun : MonoBehaviour
     }
     public void SetGun(int n)
     {
-        if (transform.childCount != 0)
-        {
-            Destroy(activeGun);
-        }
-
-        activeGun = Instantiate(Guns[n], transform);
-        inventory.setSelected(Guns[n], activeGun);
+        inventory.setSelected(Guns[n]);
     }
 }

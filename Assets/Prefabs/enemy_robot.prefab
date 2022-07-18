@@ -578,6 +578,7 @@ MonoBehaviour:
   speed: 5
   stopDistance: 10
   randomRange: 8
+  shouldFlip: 1
 --- !u!114 &8977647470142613866
 MonoBehaviour:
   m_ObjectHideFlags: 0

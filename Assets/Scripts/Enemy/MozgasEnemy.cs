@@ -6,7 +6,7 @@ public class MozgasEnemy : Mozgas
 {
     [SerializeField] private float stopDistance;
     [SerializeField] private float randomRange = 8;
-
+    [SerializeField] private bool shouldFlip;
     private Transform playerTransform;
     private Vector3 offset;
     private float distance;
@@ -24,7 +24,7 @@ public class MozgasEnemy : Mozgas
     private void FixedUpdate()
     {
         moveToPlayer();
-        flipCheck();
+        if (shouldFlip)flipCheck();
     }
 
     private void moveToPlayer()
