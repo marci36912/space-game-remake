@@ -254,6 +254,8 @@ MonoBehaviour:
   speed: 5
   stopDistance: 6
   randomRange: 8
+  minDistance: 6
+  shouldFlip: 0
 --- !u!50 &259746411508886460
 Rigidbody2D:
   serializedVersion: 4

@@ -6,6 +6,7 @@ public class MozgasEnemy : Mozgas
 {
     [SerializeField] private float stopDistance;
     [SerializeField] private float randomRange = 8;
+    [SerializeField] private float minDistance = 2;
     [SerializeField] private bool shouldFlip;
     private Transform playerTransform;
     private Vector3 offset;
@@ -29,17 +30,29 @@ public class MozgasEnemy : Mozgas
 
     private void moveToPlayer()
     {
-        if (stop())
+        if(playerDistance() <= minDistance)
+        {
+            entity.velocity = (transform.position - playerTransform.position).normalized * speed * 1.2f;
+        }
+        else if(playerDistance() > minDistance && stop())
         {
             transform.position = Vector2.MoveTowards(transform.position, playerTransform.position + offset, Time.deltaTime * speed);
+        }
+        else if(playerDistance() >= minDistance)
+        {
+            entity.velocity = Vector3.zero;
         }
 
         distance = transform.position.x - playerTransform.position.x;
     }
 
+    private float playerDistance()
+    {
+        return Vector2.Distance(transform.position, playerTransform.position);
+    }
     private bool stop()
     {
-        if (Vector2.Distance(transform.position, playerTransform.position) < stopDistance) return false;
+        if (playerDistance() < stopDistance) return false;
         else return true;
     }
 

@@ -32,10 +32,6 @@ public class Shooting : MonoBehaviour
         PlayerHealth.OnPlayerDeath += onDeath;
     }
 
-    private void OnDisable() 
-    {
-        bulletText.text = "";
-    }
     private void OnEnable() 
     {
         if(stats != null) magazineStatus();
@@ -44,7 +40,6 @@ public class Shooting : MonoBehaviour
 #region playerdeath
     private void OnDestroy()
     {
-        bulletText.text = "";
         PlayerHealth.OnPlayerDeath -= onDeath;
     }
 

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Sword : MonoBehaviour
 {
     private static float cooldown = 0;
 
+    private TextMeshProUGUI bulletText;
     private Animator anim;
     private Transform hitReg;
     private float cooldownTime = 1;
@@ -15,12 +17,17 @@ public class Sword : MonoBehaviour
     
     private void Start()
     {
+        bulletText = GameObject.Find("bulletText").GetComponent<TextMeshProUGUI>();
         anim = FindObjectOfType<Animator>();
         hitReg = transform.parent;
         damage = (int)(damage * Buffs.SwordDamage);
         PlayerHealth.OnPlayerDeath += onDeath;
     }
 
+    private void OnEnable() 
+    {
+        if(bulletText != null) bulletText.text = "";
+    }
     #region playerdeath
     private void OnDestroy()
     {
