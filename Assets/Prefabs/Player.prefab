@@ -3539,7 +3539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6166752596804802866}
   m_Layer: 6
-  m_Name: gun2
+  m_Name: slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4857,7 +4857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8755073665764275115}
   m_Layer: 6
-  m_Name: gun1
+  m_Name: slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

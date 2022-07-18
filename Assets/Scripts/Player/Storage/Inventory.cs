@@ -16,18 +16,18 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        activeGuns[0] = GameObject.Find("slot1");
+        activeGuns[1] = GameObject.Find("slot2");
+
         getImages();
 
-        activeGuns[0] = GameObject.Find("gun1");
-        activeGuns[1] = GameObject.Find("gun2");
-        inventoryImage[inventoryImage.Length-1].color = Color.gray;
+        inventoryImage[1].color = Color.gray;
 
         if (guns[0] != null && activeGuns[0].transform.childCount == 0) 
             Instantiate(guns[0], activeGuns[0].transform);
         if (guns[1] != null && activeGuns[1].transform.childCount == 0) 
             Instantiate(guns[1], activeGuns[1].transform);
 
-        activeGuns[0].SetActive(true);
         activeGuns[1].SetActive(false);
     }
 
@@ -62,21 +62,27 @@ public class Inventory : MonoBehaviour
     {
         if (guns[0] == null)
         {
+            activeGuns[0].SetActive(true);
+            activeGuns[1].SetActive(false);
+            selected = 0;
+            tmp = 0;
             guns[0] = gun;
             inventoryImage[0].sprite = gun.GetComponent<SpriteRenderer>().sprite;
             inventoryImage[0].SetNativeSize();
             if (activeGuns[0].transform.childCount > 0) Destroy(activeGuns[0].transform.GetChild(0));
             Instantiate(guns[0], activeGuns[0].transform);
-            selected = 0;
         }
         else if (guns[0] != null && guns[1] == null)
         {
+            activeGuns[1].SetActive(true);
+            activeGuns[0].SetActive(false);
+            selected = 1;
+            tmp = 1;
             guns[1] = gun;
             inventoryImage[1].sprite = gun.GetComponent<SpriteRenderer>().sprite;
             inventoryImage[1].SetNativeSize();
             if (activeGuns[1].transform.childCount > 0) Destroy(activeGuns[1].transform.GetChild(0));
             Instantiate(guns[1], activeGuns[1].transform);
-            selected = 1;
         }
         else
         {
