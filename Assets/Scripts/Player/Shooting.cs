@@ -21,7 +21,6 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         Instance = this;
-
         bulletText = GameObject.Find("bulletText").GetComponent<TextMeshProUGUI>();
         aimPoint = transform.Find("AimPoint");
         stats = GunStats.ReturnGun(n);
@@ -35,6 +34,7 @@ public class Shooting : MonoBehaviour
     private void OnEnable() 
     {
         if(stats != null) magazineStatus();
+        Instance = this;
     }
     
 #region playerdeath
